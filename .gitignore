@@ -1,0 +1,7 @@
+# Intellij IDEA specific directory
+/.idea
+/self-service-registartion/.idea
+/service-registrar/.idea
+
+# all .iml files
+*.iml
