@@ -10,16 +10,22 @@
     <packaging>war</packaging>
     <name>MM-Self-Service-Registration</name>
 
+    <properties>
+        <javax.rs.version>2.0</javax.rs.version>
+        <jersey.servlet.container.version>2.25.1</jersey.servlet.container.version>
+        <tomcat.plugin.version>2.2</tomcat.plugin.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>javax.ws.rs</groupId>
             <artifactId>javax.ws.rs-api</artifactId>
-            <version>2.0</version>
+            <version>${javax.rs.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.glassfish.jersey.containers</groupId>
-            <version>2.25.1</version>
+            <version>${jersey.servlet.container.version}</version>
             <artifactId>jersey-container-servlet-core</artifactId>
         </dependency>
     </dependencies>
@@ -29,7 +35,7 @@
             <plugin>
                 <groupId>org.apache.tomcat.maven</groupId>
                 <artifactId>tomcat7-maven-plugin</artifactId>
-                <version>2.2</version>
+                <version>${tomcat.plugin.version}</version>
                 <configuration>
                     <path>/</path>
                 </configuration>
