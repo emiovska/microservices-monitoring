@@ -14,6 +14,8 @@
         <javax.rs.version>2.0</javax.rs.version>
         <jersey.servlet.container.version>2.25.1</jersey.servlet.container.version>
         <tomcat.plugin.version>2.2</tomcat.plugin.version>
+        <log4j.api.version>2.8.2</log4j.api.version>
+        <log4j.core.version>2.8.2</log4j.core.version>
     </properties>
 
     <dependencies>
@@ -27,6 +29,18 @@
             <groupId>org.glassfish.jersey.containers</groupId>
             <version>${jersey.servlet.container.version}</version>
             <artifactId>jersey-container-servlet-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>${log4j.api.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j.core.version}</version>
         </dependency>
     </dependencies>
 
