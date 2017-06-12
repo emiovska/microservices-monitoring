@@ -7,7 +7,7 @@
     <groupId>MM-Self-Service-Registration</groupId>
     <artifactId>MM-Self-Service-Registration</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <name>MM-Self-Service-Registration</name>
 
     <properties>
