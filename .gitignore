@@ -3,5 +3,9 @@
 /self-service-registartion/.idea
 /service-registrar/.idea
 
+# Target directories
+/self-service-registartion/target
+/service-registrar/target
+
 # all .iml files
 *.iml
