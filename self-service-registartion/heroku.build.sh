@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-cd /self-service-registartion
+cd self-service-registartion
