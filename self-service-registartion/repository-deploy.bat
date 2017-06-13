@@ -10,6 +10,7 @@ ECHO Setting up for git
 CD target
 COPY *.jar ..\..\..\
 CD ..\..\
+SET /P _message= Please enter a commit message:
 GIT checkout lib-repository
 GIT pull origin lib-repository
 CD self-service-registartion
@@ -19,8 +20,7 @@ COPY *.jar microservices-monitoring\self-service-registartion\
 DEL *.jar
 CD microservices-monitoring\self-service-registartion
 GIT add *.jar
-SET /P _message= Please enter a commit message:
-GIT commit -m "%_message%"
+GIT commit -m %_message%
 GIT push
 ECHO.
 ECHO Done
