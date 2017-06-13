@@ -19,7 +19,8 @@ COPY *.jar microservices-monitoring\self-service-registartion\
 DEL *.jar
 CD microservices-monitoring\self-service-registartion
 GIT add *.jar
-GIT commit -m "[no-issue] repository version updated"
+SET /P _message= Please enter a commit message:
+GIT commit -m "%_message%"
 GIT push
 ECHO.
 ECHO Done
