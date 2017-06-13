@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>MM-Self-Service-Registration</groupId>
-    <artifactId>MM-Self-Service-Registration</artifactId>
+    <groupId>com.github.emiovska.mm.self.service.registration</groupId>
+    <artifactId>mm.self.service.registration</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>MM-Self-Service-Registration</name>
