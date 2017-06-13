@@ -20,7 +20,7 @@ COPY *.jar microservices-monitoring\self-service-registartion\
 DEL *.jar
 CD microservices-monitoring\self-service-registartion
 GIT add *.jar
-GIT commit -m %_message%
+GIT commit -m "%_message%"
 GIT push
 ECHO.
 ECHO Done
