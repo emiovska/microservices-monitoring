@@ -2,10 +2,12 @@
 /.idea
 /self-service-registartion/.idea
 /service-registrar/.idea
+/property-files-loader/.idea
 
 # Target directories
 /self-service-registartion/target
 /service-registrar/target
+/property-files-loader/target
 
 # all .iml files
 *.iml
