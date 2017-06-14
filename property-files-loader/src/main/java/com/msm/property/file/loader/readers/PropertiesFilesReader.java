@@ -1,16 +1,10 @@
 package com.msm.property.file.loader.readers;
 
-import com.msm.property.file.loader.annotations.PropertiesResource;
-import com.msm.property.file.loader.annotations.PropertyName;
 import com.msm.property.file.loader.utils.PathBuilder;
-import com.msm.property.file.loader.utils.PropertiesFilesUtils;
-import org.reflections.Reflections;
 
 import java.io.*;
-import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * @author riste.jovanoski
