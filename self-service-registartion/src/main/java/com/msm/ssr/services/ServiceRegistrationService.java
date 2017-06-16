@@ -1,28 +1,24 @@
 package com.msm.ssr.services;
 
+import com.msm.http.client.MMHttpClient;
+import com.msm.http.client.response.MMHttpResponse;
+import com.msm.http.client.status.code.MMStatusCode;
+import com.msm.http.client.utils.MMHttpUtils;
+import com.msm.ssr.builders.UrlPathBuilder;
 import com.msm.ssr.exceptions.UrlBuildException;
 import com.msm.ssr.interfaces.ServiceRegistrationInterface;
-import com.msm.ssr.builders.UrlPathBuilder;
-import org.apache.http.HttpResponse;
-import org.apache.http.HttpStatus;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.message.BasicNameValuePair;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Map;
 
 /**
  * @author riste.jovanoski
  * @since 6/14/2017
  */
 public class ServiceRegistrationService implements ServiceRegistrationInterface {
-
+    private final Logger LOGGER = LogManager.getLogger(this.getClass());
     private static final String SERVICE_ID_PARAMETER_NAME = "serviceId";
     private static final String SERVICE_HOST_PARAMETER_NAME = "serviceHost";
     private static final String SERVICE_HEALTH_CHECK_PARAMETER_NAME = "healthCheckEndpoint";
@@ -31,39 +27,47 @@ public class ServiceRegistrationService implements ServiceRegistrationInterface 
     public boolean register(String registerHost, String registrationEndpoint, String serviceId, String serviceHost, String healthCheckEndpoint) {
         try {
             String serviceRegisterUrl = UrlPathBuilder.buildUrl(registerHost, new String[]{registrationEndpoint});
-            HttpClient client = HttpClientBuilder.create().build();
-            HttpPost request = new HttpPost(serviceRegisterUrl);
 
-            List<NameValuePair> urlParameters = new ArrayList<>();
-            urlParameters.add(new BasicNameValuePair(SERVICE_ID_PARAMETER_NAME, serviceId));
-            urlParameters.add(new BasicNameValuePair(SERVICE_HOST_PARAMETER_NAME, serviceHost));
-            urlParameters.add(new BasicNameValuePair(SERVICE_HEALTH_CHECK_PARAMETER_NAME, healthCheckEndpoint));
+            Map<String, String> parameters = MMHttpUtils.constructParametersMap(new String[]{SERVICE_ID_PARAMETER_NAME, SERVICE_HOST_PARAMETER_NAME, SERVICE_HEALTH_CHECK_PARAMETER_NAME}, new String[]{serviceId, serviceHost, healthCheckEndpoint});
 
-            request.setEntity(new UrlEncodedFormEntity(urlParameters));
-            HttpResponse response = client.execute(request);
-            int statusCode = response.getStatusLine().getStatusCode();
-            return statusCode == HttpStatus.SC_OK;
+            MMHttpClient client = new MMHttpClient();
+            MMHttpResponse response = client.executePost(serviceRegisterUrl, parameters);
 
+            int statusCode = response.getStatusCode();
+            if (statusCode == MMStatusCode.OK) {
+                LOGGER.debug("successfully registered");
+                return true;
+            }
+
+            LOGGER.debug("unsuccessfully registered");
         } catch (UrlBuildException | IOException exception) {
             exception.printStackTrace();
         }
+
         return false;
     }
 
     @Override
-    public boolean unregister(String registerHost, String unregisterEndpoint, String serviceId) {
+    public boolean deregister(String registerHost, String deregisterEndpoint, String serviceId) {
         try {
-            String serviceRegisterUrl = UrlPathBuilder.buildUrl(registerHost, new String[]{unregisterEndpoint});
-            HttpClient client = HttpClientBuilder.create().build();
-            HttpGet request = new HttpGet(serviceRegisterUrl);
+            String serviceRegisterUrl = UrlPathBuilder.buildUrl(registerHost, new String[]{deregisterEndpoint});
 
-            HttpResponse response = client.execute(request);
-            int statusCode = response.getStatusLine().getStatusCode();
-            return statusCode == HttpStatus.SC_OK;
+            Map<String, String> parameters = MMHttpUtils.constructParametersMap(new String[]{SERVICE_ID_PARAMETER_NAME}, new String[]{serviceId});
 
+            MMHttpClient client = new MMHttpClient();
+            MMHttpResponse response = client.executeGet(serviceRegisterUrl, parameters);
+
+            int statusCode = response.getStatusCode();
+            if (statusCode == MMStatusCode.OK) {
+                LOGGER.debug("successfully unregistered");
+                return true;
+            }
+
+            LOGGER.debug("unsuccessfully unregistered");
         } catch (UrlBuildException | IOException e) {
             e.printStackTrace();
         }
+
         return false;
     }
 

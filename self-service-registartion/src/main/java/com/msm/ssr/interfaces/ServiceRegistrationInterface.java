@@ -8,5 +8,5 @@ public interface ServiceRegistrationInterface {
 
     public boolean register(String registerHost, String registrationEndpoint, String serviceId, String serviceHost, String healthCheckEndpoint);
 
-    public boolean unregister(String registerHost, String unregisterEndpoint, String serviceId);
+    public boolean deregister(String registerHost, String deregisterEndpoint, String serviceId);
 }
