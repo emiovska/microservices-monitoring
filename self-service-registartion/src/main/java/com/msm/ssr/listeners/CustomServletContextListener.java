@@ -32,7 +32,6 @@ public class CustomServletContextListener implements ServletContextListener {
             PathAnnotationUtils.changePathValue(HealthCheckController.class, HEALTH_CHECK_METHOD_NAME, healthCheckEndpoint);
 
             SERVICE_REGISTRATION_SERVICE.register(serviceProperties.getRegistrarHost(), serviceProperties.getRegistrationEndpoint(), serviceProperties.getId(), serviceRunningAddress, healthCheckEndpoint);
-            SERVICE_REGISTRATION_SERVICE.deregister(serviceProperties.getRegistrarHost(), serviceProperties.getDeregistrationEndpoint(), serviceProperties.getId());
         } catch (ApplicationServerUrlException e) {
             e.printStackTrace();
             LOGGER.debug("Could not construct the server urls");
