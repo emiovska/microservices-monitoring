@@ -27,7 +27,6 @@ public class ServiceRegistrationService implements ServiceRegistrationInterface 
     public boolean register(String registerHost, String registrationEndpoint, String serviceId, String serviceHost, String healthCheckEndpoint) {
         try {
             String serviceRegisterUrl = UrlPathBuilder.buildUrl(registerHost, new String[]{registrationEndpoint});
-
             Map<String, String> parameters = MMHttpUtils.constructParametersMap(new String[]{SERVICE_ID_PARAMETER_NAME, SERVICE_HOST_PARAMETER_NAME, SERVICE_HEALTH_CHECK_PARAMETER_NAME}, new String[]{serviceId, serviceHost, healthCheckEndpoint});
 
             MMHttpClient client = new MMHttpClient();
@@ -51,7 +50,6 @@ public class ServiceRegistrationService implements ServiceRegistrationInterface 
     public boolean deregister(String registerHost, String deregisterEndpoint, String serviceId) {
         try {
             String serviceRegisterUrl = UrlPathBuilder.buildUrl(registerHost, new String[]{deregisterEndpoint});
-
             Map<String, String> parameters = MMHttpUtils.constructParametersMap(new String[]{SERVICE_ID_PARAMETER_NAME}, new String[]{serviceId});
 
             MMHttpClient client = new MMHttpClient();
