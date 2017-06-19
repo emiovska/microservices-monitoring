@@ -29,10 +29,10 @@ public class EndpointConfigurator {
         return false;
     }
 
-    public static boolean changePathValue(Class resource, String methodName, String newPathValue) {
+    public static boolean changePathValue(Class resource, String newPathValue, String methodName, Class<?>... parametersTypes) {
         Method method = null;
         try {
-            method = resource.getMethod(methodName);
+            method = resource.getDeclaredMethod(methodName, parametersTypes);
             Annotation annotation = method.getAnnotation(Path.class);
             if (AnnotationValueOverrider.overrideAnnotationValue(annotation, newPathValue)) {
                 LOGGER.debug("newPathValue successfully overridden");
