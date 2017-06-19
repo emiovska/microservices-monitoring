@@ -7,7 +7,7 @@
     <groupId>com.github.emiovska.mm.service.registrar</groupId>
     <artifactId>mm.service.registrar</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <name>MM-Service-Registrar</name>
 
     <properties>
@@ -19,6 +19,15 @@
 
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+
+        <maven.deploy.plugin.version>2.8.1</maven.deploy.plugin.version>
+        <github.site.maven.plugin.version>0.12</github.site.maven.plugin.version>
+        <github.deployment.message>[no-issue] Maven artifacts for ${project.name}:${project.version}
+        </github.deployment.message>
+        <github.global.server>github</github.global.server>
+        <github.repository.branch>maven-repositories</github.repository.branch>
+        <github.repository.name>maven-repositories</github.repository.name>
+        <github.repository.owner>RisteJovanoski</github.repository.owner>
     </properties>
 
     <dependencies>
@@ -42,6 +51,14 @@
         </dependency>
     </dependencies>
 
+    <distributionManagement>
+        <repository>
+            <id>internal.repo</id>
+            <name>Temporary Staging Repository</name>
+            <url>file://${project.build.directory}/${github.repository.branch}</url>
+        </repository>
+    </distributionManagement>
+
     <build>
         <plugins>
             <plugin>
@@ -60,6 +77,42 @@
                 <configuration>
                     <path>/</path>
                 </configuration>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>${maven.deploy.plugin.version}</version>
+                <configuration>
+                    <altDeploymentRepository>
+                        internal.repo::default::file://${project.build.directory}/${github.repository.branch}
+                    </altDeploymentRepository>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>com.github.github</groupId>
+                <artifactId>site-maven-plugin</artifactId>
+                <version>${github.site.maven.plugin.version}</version>
+                <configuration>
+                    <merge>true</merge>
+                    <noJekyll>true</noJekyll>
+                    <message>${github.deployment.message}</message>
+                    <outputDirectory>${project.build.directory}/${github.repository.branch}</outputDirectory>
+                    <branch>refs/heads/${github.repository.branch}</branch>
+                    <includes>
+                        <include>**/*</include>
+                    </includes>
+                    <repositoryName>${github.repository.name}</repositoryName>
+                    <repositoryOwner>${github.repository.owner}</repositoryOwner>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>site</goal>
+                        </goals>
+                        <phase>deploy</phase>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
