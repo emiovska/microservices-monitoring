@@ -19,11 +19,21 @@
         <log4j.core.version>2.8.2</log4j.core.version>
         <junit.version>4.12</junit.version>
 
+        <properties.files.loader.version>0.0.1-SNAPSHOT</properties.files.loader.version>
+        <endpoints.configurator.version>0.0.1-SNAPSHOT</endpoints.configurator.version>
+
         <tomcat.plugin.version>2.2</tomcat.plugin.version>
 
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
+
+    <repositories>
+        <repository>
+            <id>GitHub repository</id>
+            <url>https://github.com/RisteJovanoski/maven-repositories/raw/maven-repositories</url>
+        </repository>
+    </repositories>
 
     <dependencies>
         <dependency>
@@ -62,6 +72,25 @@
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
             <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>${servlet.api.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.emiovksa.mm.property.files.loader</groupId>
+            <artifactId>properties.file.loader</artifactId>
+            <version>${properties.files.loader.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.emiovksa.mm.endpoints.configurator</groupId>
+            <artifactId>endpoints.configurator</artifactId>
+            <version>${endpoints.configurator.version}</version>
         </dependency>
     </dependencies>
 
