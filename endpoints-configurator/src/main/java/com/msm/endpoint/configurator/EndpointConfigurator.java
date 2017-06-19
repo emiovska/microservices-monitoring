@@ -1,5 +1,7 @@
-package com.msm.ssr.utils;
+package com.msm.endpoint.configurator;
 
+import com.msm.endpoint.configurator.utils.PathUtils;
+import com.msm.endpoint.configurator.value.overrider.AnnotationValueOverrider;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -9,16 +11,16 @@ import java.lang.reflect.Method;
 
 /**
  * @author riste.jovanoski
- * @since 6/14/2017
+ * @since 6/19/2017
  */
-public class PathAnnotationUtils {
+public class EndpointConfigurator {
 
-    private static final Logger LOGGER = LogManager.getLogger(PathAnnotationUtils.class);
+    private static final Logger LOGGER = LogManager.getLogger(EndpointConfigurator.class);
 
     public static boolean changePathValue(Class resourceClass, String newPathValue) {
-        newPathValue = normalizeNewPathValue(newPathValue);
+        newPathValue = PathUtils.normalizeNewPathValue(newPathValue);
         Annotation annotation = resourceClass.getAnnotation(Path.class);
-        if (AnnotationValueUtils.overrideAnnotationValue(annotation, newPathValue)) {
+        if (AnnotationValueOverrider.overrideAnnotationValue(annotation, newPathValue)) {
             LOGGER.debug("newPathValue successfully overridden");
             return true;
         }
@@ -32,7 +34,7 @@ public class PathAnnotationUtils {
         try {
             method = resource.getMethod(methodName);
             Annotation annotation = method.getAnnotation(Path.class);
-            if (AnnotationValueUtils.overrideAnnotationValue(annotation, newPathValue)) {
+            if (AnnotationValueOverrider.overrideAnnotationValue(annotation, newPathValue)) {
                 LOGGER.debug("newPathValue successfully overridden");
                 return true;
             }
@@ -42,13 +44,6 @@ public class PathAnnotationUtils {
 
         LOGGER.debug("could not override newPathValue");
         return false;
-    }
-
-    private static String normalizeNewPathValue(String path) {
-        if (path.startsWith("/")) {
-            return path.substring(1, path.length());
-        }
-        return path;
     }
 
 }

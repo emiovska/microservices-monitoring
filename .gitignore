@@ -4,12 +4,14 @@
 /service-registrar/.idea
 /property-files-loader/.idea
 /http-client/.idea
+/endpoints-configurator/.idea
 
 # Target directories
 /self-service-registartion/target
 /service-registrar/target
 /property-files-loader/target
-/http-client//target
+/http-client/target
+/endpoints-configurator/target
 
 # all .iml files
 *.iml
