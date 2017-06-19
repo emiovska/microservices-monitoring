@@ -30,6 +30,7 @@ public class EndpointConfigurator {
     }
 
     public static boolean changePathValue(Class resource, String newPathValue, String methodName, Class<?>... parametersTypes) {
+        newPathValue = PathUtils.normalizeNewPathValue(newPathValue);
         Method method = null;
         try {
             method = resource.getMethod(methodName, parametersTypes);
