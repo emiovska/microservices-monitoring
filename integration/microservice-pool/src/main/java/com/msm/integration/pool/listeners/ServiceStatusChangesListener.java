@@ -15,16 +15,19 @@ public class ServiceStatusChangesListener implements ServiceStatusListener {
     @Override
     public void notifyForRegistration(String... parameters) {
         LOGGER.debug("notification for registration obtained, received parameters");
-        for (String parameter : parameters) {
-            LOGGER.debug(parameter);
-        }
+        logParameters(parameters);
     }
 
     @Override
     public void notifyForDeregistration(String... parameters) {
         LOGGER.debug("notification for registration obtained, received parameters");
+        logParameters(parameters);
+    }
+
+    private void logParameters(String... parameters) {
         for (String parameter : parameters) {
             LOGGER.debug(parameter);
         }
     }
+
 }
