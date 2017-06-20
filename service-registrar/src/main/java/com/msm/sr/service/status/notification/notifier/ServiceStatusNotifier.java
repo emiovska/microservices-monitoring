@@ -4,6 +4,7 @@ import com.msm.sr.service.status.notification.listener.ServiceStatusListener;
 import com.msm.sr.service.status.notification.type.NotificationType;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -16,6 +17,10 @@ public class ServiceStatusNotifier {
 
     public void registerListener(ServiceStatusListener listener) {
         LISTENERS.add(listener);
+    }
+
+    public void registerListeners(ServiceStatusListener... listeners) {
+        LISTENERS.addAll(Arrays.asList(listeners));
     }
 
     public void unregisterListener() {
