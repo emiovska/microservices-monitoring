@@ -15,11 +15,7 @@ public class ServiceStatusNotifier {
 
     private static List<ServiceStatusListener> LISTENERS = new ArrayList<>();
 
-    public void registerListener(ServiceStatusListener listener) {
-        LISTENERS.add(listener);
-    }
-
-    public void registerListeners(ServiceStatusListener... listeners) {
+    public void registerListener(ServiceStatusListener... listeners) {
         LISTENERS.addAll(Arrays.asList(listeners));
     }
 
@@ -42,13 +38,13 @@ public class ServiceStatusNotifier {
 
     private void notifyForRegistration(String... parameters) {
         for (ServiceStatusListener listener : LISTENERS) {
-            listener.notifyForRegistration();
+            listener.notifyForRegistration(parameters);
         }
     }
 
     private void notifyForDeregistration(String... parameters) {
         for (ServiceStatusListener listener : LISTENERS) {
-            listener.notifyForDeregistration();
+            listener.notifyForDeregistration(parameters);
         }
     }
 

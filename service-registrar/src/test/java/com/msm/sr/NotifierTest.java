@@ -20,7 +20,7 @@ public class NotifierTest {
         DemoListener listener2 = new DemoListener();
         DemoListener listener3 = new DemoListener();
 
-        SERVICE_STATUS_NOTIFIER.registerListeners(listener, listener2, listener3);
+        SERVICE_STATUS_NOTIFIER.registerListener(listener, listener2, listener3);
 
         SERVICE_STATUS_NOTIFIER.notifyListeners(NotificationType.REGISTRATION);
         SERVICE_STATUS_NOTIFIER.notifyListeners(NotificationType.DEREGISTRATION);
