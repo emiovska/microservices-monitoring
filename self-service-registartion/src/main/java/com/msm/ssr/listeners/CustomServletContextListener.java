@@ -1,12 +1,12 @@
 package com.msm.ssr.listeners;
 
+import com.msm.endpoint.configurator.EndpointConfigurator;
 import com.msm.property.file.loader.service.PropertiesFilesService;
 import com.msm.ssr.exceptions.ApplicationServerUrlException;
 import com.msm.ssr.properties.representations.ServiceProperties;
 import com.msm.ssr.rest.controller.HealthCheckController;
 import com.msm.ssr.services.ServiceRegistrationService;
 import com.msm.ssr.utils.ServerUtils;
-import com.msm.ssr.utils.PathAnnotationUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -29,7 +29,7 @@ public class CustomServletContextListener implements ServletContextListener {
             String serviceRunningAddress = ServerUtils.getServiceAddress(servletContextEvent.getServletContext().getContextPath(), serviceProperties);
 
             String healthCheckEndpoint = serviceProperties.getHealthCheckEndpoint();
-            PathAnnotationUtils.changePathValue(HealthCheckController.class, HEALTH_CHECK_METHOD_NAME, healthCheckEndpoint);
+            EndpointConfigurator.changePathValue(HealthCheckController.class, healthCheckEndpoint, HEALTH_CHECK_METHOD_NAME);
 
             SERVICE_REGISTRATION_SERVICE.register(serviceProperties.getRegistrarHost(), serviceProperties.getRegistrationEndpoint(), serviceProperties.getId(), serviceRunningAddress, healthCheckEndpoint);
         } catch (ApplicationServerUrlException e) {

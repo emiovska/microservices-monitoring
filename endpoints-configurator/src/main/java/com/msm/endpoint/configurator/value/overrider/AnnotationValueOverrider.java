@@ -1,4 +1,4 @@
-package com.msm.ssr.utils;
+package com.msm.endpoint.configurator.value.overrider;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
@@ -7,10 +7,9 @@ import java.util.Map;
 
 /**
  * @author riste.jovanoski
- * @since 6/14/2017
+ * @since 6/19/2017
  */
-public class AnnotationValueUtils {
-
+public class AnnotationValueOverrider {
     private static final String ANNOTATION_VALUE_PROPERTY_NAME = "value";
     private static final String FIELD_PROPERTY_NAME = "memberValues";
 
@@ -38,5 +37,4 @@ public class AnnotationValueUtils {
         memberValues.put(ANNOTATION_VALUE_PROPERTY_NAME, newValue);
         return true;
     }
-
 }

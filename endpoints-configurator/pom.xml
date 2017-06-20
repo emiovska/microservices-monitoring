@@ -4,25 +4,17 @@
         xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.github.emiovska.mm.service.registrar</groupId>
-    <artifactId>mm.service.registrar</artifactId>
+    <groupId>com.github.emiovksa.mm.endpoints.configurator</groupId>
+    <artifactId>endpoints.configurator</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>MM-Service-Registrar</name>
+    <name>Endpoints Configurator</name>
 
     <properties>
-        <servlet.api.version>3.1.0</servlet.api.version>
         <javax.rs.version>2.0</javax.rs.version>
-        <jersey.servlet.container.version>2.25.1</jersey.servlet.container.version>
 
         <log4j.api.version>2.8.2</log4j.api.version>
         <log4j.core.version>2.8.2</log4j.core.version>
-        <junit.version>4.12</junit.version>
-
-        <properties.files.loader.version>0.0.1-SNAPSHOT</properties.files.loader.version>
-        <endpoints.configurator.version>0.0.1-SNAPSHOT</endpoints.configurator.version>
-
-        <tomcat.plugin.version>2.2</tomcat.plugin.version>
 
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -37,31 +29,11 @@
         <github.repository.owner>RisteJovanoski</github.repository.owner>
     </properties>
 
-    <repositories>
-        <repository>
-            <id>GitHub repository</id>
-            <url>https://github.com/RisteJovanoski/maven-repositories/raw/maven-repositories</url>
-        </repository>
-    </repositories>
-
     <dependencies>
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>${servlet.api.version}</version>
-            <scope>provided</scope>
-        </dependency>
-
         <dependency>
             <groupId>javax.ws.rs</groupId>
             <artifactId>javax.ws.rs-api</artifactId>
             <version>${javax.rs.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.glassfish.jersey.containers</groupId>
-            <version>${jersey.servlet.container.version}</version>
-            <artifactId>jersey-container-servlet-core</artifactId>
         </dependency>
 
         <dependency>
@@ -74,32 +46,6 @@
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
             <version>${log4j.core.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>${servlet.api.version}</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>com.github.emiovksa.mm.property.files.loader</groupId>
-            <artifactId>properties.file.loader</artifactId>
-            <version>${properties.files.loader.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.github.emiovksa.mm.endpoints.configurator</groupId>
-            <artifactId>endpoints.configurator</artifactId>
-            <version>${endpoints.configurator.version}</version>
         </dependency>
     </dependencies>
 
@@ -119,15 +65,6 @@
                 <configuration>
                     <source>${maven.compiler.source}</source>
                     <target>${maven.compiler.target}</target>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.tomcat.maven</groupId>
-                <artifactId>tomcat7-maven-plugin</artifactId>
-                <version>${tomcat.plugin.version}</version>
-                <configuration>
-                    <path>/</path>
                 </configuration>
             </plugin>
 
