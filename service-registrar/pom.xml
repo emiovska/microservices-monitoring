@@ -91,13 +91,13 @@
         </dependency>
 
         <dependency>
-            <groupId>com.github.emiovksa.mm.property.files.loader</groupId>
+            <groupId>com.github.emiovska.mm.property.files.loader</groupId>
             <artifactId>properties.file.loader</artifactId>
             <version>${properties.files.loader.version}</version>
         </dependency>
 
         <dependency>
-            <groupId>com.github.emiovksa.mm.endpoints.configurator</groupId>
+            <groupId>com.github.emiovska.mm.endpoints.configurator</groupId>
             <artifactId>endpoints.configurator</artifactId>
             <version>${endpoints.configurator.version}</version>
         </dependency>
