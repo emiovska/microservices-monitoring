@@ -5,6 +5,10 @@
 /property-files-loader/.idea
 /http-client/.idea
 /endpoints-configurator/.idea
+/integration/microservice-a/.idea
+/integration/microservice-b/.idea
+/integration/microservice-c/.idea
+/integration/microservice-pool/.idea
 
 # Target directories
 /self-service-registartion/target
@@ -12,6 +16,10 @@
 /property-files-loader/target
 /http-client/target
 /endpoints-configurator/target
+/integration/microservice-a/target
+/integration/microservice-b/target
+/integration/microservice-c/target
+/integration/microservice-pool/target
 
 # all .iml files
 *.iml
