@@ -17,7 +17,7 @@ public class ServiceEntity {
     private Long id;
 
     @NotNull
-    @Column(name = "service_id")
+    @Column(name = "service_id", unique = true)
     private String serviceId;
 
     @NotNull

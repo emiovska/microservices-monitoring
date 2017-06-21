@@ -1,6 +1,7 @@
 package com.msm.integration.pool.data.service;
 
 import com.msm.integration.pool.data.model.ServiceEntity;
+import com.msm.sr.service.status.notification.listener.ServiceStatusListener;
 
 import java.util.List;
 
@@ -8,7 +9,7 @@ import java.util.List;
  * @author riste.jovanoski
  * @since 6/20/2017
  */
-public interface ServiceEntityService {
+public interface ServiceEntityService extends ServiceStatusListener {
 
     public ServiceEntity findById(Long id);
 
