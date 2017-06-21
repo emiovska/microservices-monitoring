@@ -1,12 +1,13 @@
 package com.msm.integration.pool.data.repository.impl;
 
+import com.msm.integration.pool.data.hibernate.utils.HibernateUtils;
 import com.msm.integration.pool.data.model.ServiceEntity;
 import com.msm.integration.pool.data.repository.ServiceEntityRepository;
-import com.msm.integration.pool.data.hibernate.utils.HibernateUtils;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 
+import javax.persistence.NoResultException;
 import java.util.List;
 
 /**
@@ -29,8 +30,14 @@ public class ServiceEntityRepositoryImpl implements ServiceEntityRepository {
     public ServiceEntity findByServiceId(String serviceId) {
         Session session = SESSION_FACTORY.openSession();
         Query query = constructQueryByServiceId(session, serviceId);
-        ServiceEntity serviceEntity = (ServiceEntity) query.getSingleResult();
-        session.close();
+        ServiceEntity serviceEntity;
+        try {
+            serviceEntity = (ServiceEntity) query.getSingleResult();
+        } catch (NoResultException exception) {
+            serviceEntity = null;
+        } finally {
+            session.close();
+        }
         return serviceEntity;
     }
 
