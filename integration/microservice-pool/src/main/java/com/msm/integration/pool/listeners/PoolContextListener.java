@@ -2,6 +2,7 @@ package com.msm.integration.pool.listeners;
 
 import com.msm.integration.pool.managers.ServiceManager;
 import com.msm.integration.pool.service.state.check.services.ServiceStateService;
+import com.msm.integration.pool.data.service.manager.ServiceManager;
 import com.msm.sr.service.status.notification.manager.ServiceStatusNotifierManager;
 import com.msm.sr.service.status.notification.notifier.ServiceStatusNotifier;
 
@@ -22,6 +23,7 @@ public class PoolContextListener implements ServletContextListener {
         ServiceStatusChangesListener serviceStatusChangesListener = new ServiceStatusChangesListener();
         NOTIFIER.registerListener(serviceStatusChangesListener);
         SERVICE_STATE_SERVICE.checkServicesState();
+        ServiceManager.initializeListeners();
     }
 
     @Override
