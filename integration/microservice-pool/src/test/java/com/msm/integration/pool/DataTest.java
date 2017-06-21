@@ -2,7 +2,7 @@ package com.msm.integration.pool;
 
 import com.msm.integration.pool.data.model.ServiceEntity;
 import com.msm.integration.pool.data.service.ServiceEntityService;
-import com.msm.integration.pool.data.service.manager.ServiceManager;
+import com.msm.integration.pool.managers.ServiceManager;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
