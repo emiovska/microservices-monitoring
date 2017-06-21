@@ -20,7 +20,6 @@ public class ServiceStateServiceImpl implements ServiceStateService {
     @Override
     public void checkServicesState() {
         List<ServiceEntity> registeredServices = SERVICE_ENTITY_SERVICE.findAll();
-
         for (ServiceEntity registeredService : registeredServices) {
             if (!HEALTH_CHECK_SERVICE.isServiceActive(registeredService)) {
                 removeNotActiveServiceFromDatabase(registeredService);
