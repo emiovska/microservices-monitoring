@@ -15,6 +15,9 @@ import java.util.Map;
 public class MMHttpParametersBuilder implements MMHttpParametersBuilderInterface {
     @Override
     public String buildHttpGetParameters(String url, Map<String, String> parameters) {
+        if (parameters == null) {
+            return url;
+        }
         StringBuilder stringBuilder = new StringBuilder();
         for (String key : parameters.keySet()) {
             stringBuilder.append(key).append("=").append(parameters.get(key)).append("&");
@@ -32,6 +35,9 @@ public class MMHttpParametersBuilder implements MMHttpParametersBuilderInterface
     @Override
     public List<NameValuePair> buildHttpPostParameters(Map<String, String> parameters) {
         List<NameValuePair> urlParameters = new ArrayList<>();
+        if (parameters == null) {
+            return urlParameters;
+        }
         for (String parameterKey : parameters.keySet()) {
             urlParameters.add(new BasicNameValuePair(parameterKey, parameters.get(parameterKey)));
         }
