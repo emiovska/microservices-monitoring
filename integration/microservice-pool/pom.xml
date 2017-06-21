@@ -14,6 +14,9 @@
         <servlet.api.version>3.1.0</servlet.api.version>
         <service.registrar.version>0.0.1-SNAPSHOT</service.registrar.version>
         <tomcat.plugin.version>2.2</tomcat.plugin.version>
+        <mysql.connector.version>6.0.6</mysql.connector.version>
+        <hibernate.core.version>5.2.10.Final</hibernate.core.version>
+        <junit.version>4.12</junit.version>
 
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -39,6 +42,25 @@
             <groupId>com.github.emiovska.mm.service.registrar</groupId>
             <artifactId>mm.service.registrar</artifactId>
             <version>${service.registrar.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.connector.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate.core.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
