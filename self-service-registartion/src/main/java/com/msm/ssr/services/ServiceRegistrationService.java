@@ -37,12 +37,11 @@ public class ServiceRegistrationService implements ServiceRegistrationInterface 
                 LOGGER.debug("successfully registered");
                 return true;
             }
-
-            LOGGER.debug("unsuccessfully registered");
         } catch (MMUrlBuildException | IOException exception) {
             exception.printStackTrace();
         }
 
+        LOGGER.debug("unsuccessfully registered");
         return false;
     }
 
@@ -60,12 +59,11 @@ public class ServiceRegistrationService implements ServiceRegistrationInterface 
                 LOGGER.debug("successfully unregistered");
                 return true;
             }
-
-            LOGGER.debug("unsuccessfully unregistered");
         } catch (MMUrlBuildException | IOException e) {
             e.printStackTrace();
         }
 
+        LOGGER.debug("unsuccessfully unregistered");
         return false;
     }
 
