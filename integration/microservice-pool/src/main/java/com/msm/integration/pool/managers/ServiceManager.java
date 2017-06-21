@@ -1,7 +1,11 @@
-package com.msm.integration.pool.data.service.manager;
+package com.msm.integration.pool.managers;
 
 import com.msm.integration.pool.data.service.ServiceEntityService;
 import com.msm.integration.pool.data.service.impl.ServiceEntityServiceImpl;
+import com.msm.integration.pool.service.state.check.services.HealthCheckService;
+import com.msm.integration.pool.service.state.check.services.ServiceStateService;
+import com.msm.integration.pool.service.state.check.services.impl.HealthCheckServiceImpl;
+import com.msm.integration.pool.service.state.check.services.impl.ServiceStateServiceImpl;
 import com.msm.sr.service.status.notification.manager.ServiceStatusNotifierManager;
 import com.msm.sr.service.status.notification.notifier.ServiceStatusNotifier;
 
@@ -13,6 +17,8 @@ public class ServiceManager {
 
     private static final ServiceStatusNotifier NOTIFIER = ServiceStatusNotifierManager.getNotifier();
     private static final ServiceEntityService SERVICE_ENTITY_SERVICE = new ServiceEntityServiceImpl();
+    private static final HealthCheckService HEALTH_CHECK_SERVICE = new HealthCheckServiceImpl();
+    private static final ServiceStateService SERVICE_STATE_SERVICE = new ServiceStateServiceImpl();
 
     public static void initializeListeners() {
         NOTIFIER.registerListener(SERVICE_ENTITY_SERVICE);
@@ -20,6 +26,14 @@ public class ServiceManager {
 
     public static ServiceEntityService getServiceEntityService() {
         return SERVICE_ENTITY_SERVICE;
+    }
+
+    public static HealthCheckService getHealthCheckService() {
+        return HEALTH_CHECK_SERVICE;
+    }
+
+    public static ServiceStateService getServiceStateService() {
+        return SERVICE_STATE_SERVICE;
     }
 
 }

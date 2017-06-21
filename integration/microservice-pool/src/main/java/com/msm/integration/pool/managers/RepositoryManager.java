@@ -1,4 +1,4 @@
-package com.msm.integration.pool.data.repository.manager;
+package com.msm.integration.pool.managers;
 
 import com.msm.integration.pool.data.repository.ServiceEntityRepository;
 import com.msm.integration.pool.data.repository.impl.ServiceEntityRepositoryImpl;

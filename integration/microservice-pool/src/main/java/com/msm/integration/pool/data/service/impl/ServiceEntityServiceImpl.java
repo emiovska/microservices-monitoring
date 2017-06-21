@@ -2,7 +2,7 @@ package com.msm.integration.pool.data.service.impl;
 
 import com.msm.integration.pool.data.model.ServiceEntity;
 import com.msm.integration.pool.data.repository.ServiceEntityRepository;
-import com.msm.integration.pool.data.repository.manager.RepositoryManager;
+import com.msm.integration.pool.managers.RepositoryManager;
 import com.msm.integration.pool.data.service.ServiceEntityService;
 
 import java.util.List;
