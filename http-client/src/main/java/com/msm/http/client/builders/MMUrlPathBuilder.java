@@ -1,16 +1,16 @@
-package com.msm.ssr.builders;
+package com.msm.http.client.builders;
 
-import com.msm.ssr.exceptions.UrlBuildException;
+import com.msm.http.client.exceptions.MMUrlBuildException;
 
 /**
  * @author riste.jovanoski
- * @since 6/14/2017
+ * @since 6/21/2017
  */
-public class UrlPathBuilder {
+public class MMUrlPathBuilder {
 
-    public static String buildUrl(String host, String[] actions) throws UrlBuildException {
+    public static String buildUrl(String host, String[] actions) throws MMUrlBuildException {
         if (host == null || actions == null) {
-            throw new UrlBuildException("Could not build url! Host and actions must not be null");
+            throw new MMUrlBuildException("Could not build url! Host and actions must not be null");
         }
 
         StringBuilder urlBuilder = new StringBuilder();

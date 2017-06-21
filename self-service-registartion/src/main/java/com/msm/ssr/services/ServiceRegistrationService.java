@@ -1,11 +1,11 @@
 package com.msm.ssr.services;
 
 import com.msm.http.client.MMHttpClient;
+import com.msm.http.client.builders.MMUrlPathBuilder;
+import com.msm.http.client.exceptions.MMUrlBuildException;
 import com.msm.http.client.response.MMHttpResponse;
 import com.msm.http.client.status.code.MMStatusCode;
 import com.msm.http.client.utils.MMHttpUtils;
-import com.msm.ssr.builders.UrlPathBuilder;
-import com.msm.ssr.exceptions.UrlBuildException;
 import com.msm.ssr.interfaces.ServiceRegistrationInterface;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -26,7 +26,7 @@ public class ServiceRegistrationService implements ServiceRegistrationInterface 
     @Override
     public boolean register(String registerHost, String registrationEndpoint, String serviceId, String serviceHost, String healthCheckEndpoint) {
         try {
-            String serviceRegisterUrl = UrlPathBuilder.buildUrl(registerHost, new String[]{registrationEndpoint});
+            String serviceRegisterUrl = MMUrlPathBuilder.buildUrl(registerHost, new String[]{registrationEndpoint});
             Map<String, String> parameters = MMHttpUtils.constructParametersMap(new String[]{SERVICE_ID_PARAMETER_NAME, SERVICE_HOST_PARAMETER_NAME, SERVICE_HEALTH_CHECK_PARAMETER_NAME}, new String[]{serviceId, serviceHost, healthCheckEndpoint});
 
             MMHttpClient client = new MMHttpClient();
@@ -39,7 +39,7 @@ public class ServiceRegistrationService implements ServiceRegistrationInterface 
             }
 
             LOGGER.debug("unsuccessfully registered");
-        } catch (UrlBuildException | IOException exception) {
+        } catch (MMUrlBuildException | IOException exception) {
             exception.printStackTrace();
         }
 
@@ -49,7 +49,7 @@ public class ServiceRegistrationService implements ServiceRegistrationInterface 
     @Override
     public boolean deregister(String registerHost, String deregisterEndpoint, String serviceId) {
         try {
-            String serviceRegisterUrl = UrlPathBuilder.buildUrl(registerHost, new String[]{deregisterEndpoint});
+            String serviceRegisterUrl = MMUrlPathBuilder.buildUrl(registerHost, new String[]{deregisterEndpoint});
             Map<String, String> parameters = MMHttpUtils.constructParametersMap(new String[]{SERVICE_ID_PARAMETER_NAME}, new String[]{serviceId});
 
             MMHttpClient client = new MMHttpClient();
@@ -62,7 +62,7 @@ public class ServiceRegistrationService implements ServiceRegistrationInterface 
             }
 
             LOGGER.debug("unsuccessfully unregistered");
-        } catch (UrlBuildException | IOException e) {
+        } catch (MMUrlBuildException | IOException e) {
             e.printStackTrace();
         }
 
