@@ -13,6 +13,8 @@ public interface ServiceEntityService extends ServiceStatusListener {
 
     public ServiceEntity findById(Long id);
 
+    public ServiceEntity findByServiceId(String serviceId);
+
     public List<ServiceEntity> findAll();
 
     public void save(String serviceId, String serviceHost, String healthCheck);

@@ -21,6 +21,11 @@ public class ServiceEntityServiceImpl implements ServiceEntityService {
     }
 
     @Override
+    public ServiceEntity findByServiceId(String serviceId) {
+        return SERVICE_ENTITY_REPOSITORY.findByServiceId(serviceId);
+    }
+
+    @Override
     public List<ServiceEntity> findAll() {
         return SERVICE_ENTITY_REPOSITORY.list();
     }
