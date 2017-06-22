@@ -24,6 +24,10 @@
             margin: 0;
             background: #fafafa;
         }
+
+        .swagger-container > div.wrapper {
+            display: none;
+        }
     </style>
 </head>
 
