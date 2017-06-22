@@ -4,6 +4,9 @@ import com.msm.integration.pool.converters.ServiceEntityJsonConverter;
 import com.msm.integration.pool.data.model.ServiceEntity;
 import com.msm.integration.pool.data.service.ServiceEntityService;
 import com.msm.integration.pool.managers.ServiceManager;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -17,6 +20,7 @@ import java.util.List;
  * @since 6/21/2017
  */
 @Path("/")
+@Api(value = "/", description = "Service for active services registered to the service register", tags = {"Active Services Controller"})
 public class ActiveServicesController {
 
     private final ServiceEntityService SERVICE_ENTITY_SERVICE = ServiceManager.getServiceEntityService();
@@ -24,6 +28,7 @@ public class ActiveServicesController {
     @GET
     @Path("/active-services")
     @Produces(MediaType.APPLICATION_JSON)
+    @ApiOperation(value = "List all active services", response = ServiceEntity.class, responseContainer = "List")
     public String getActiveServices() {
         List<ServiceEntity> serviceEntities = SERVICE_ENTITY_SERVICE.findAll();
         return ServiceEntityJsonConverter.convertServiceEntitiesListToJson(serviceEntities);
@@ -32,7 +37,8 @@ public class ActiveServicesController {
     @GET
     @Path("/active-services/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public String getActiveService(@PathParam("id") Long id) {
+    @ApiOperation(value = "Get an active service by database id", response = ServiceEntity.class)
+    public String getActiveService(@ApiParam(value = "Database id", required = true) @PathParam("id") Long id) {
         ServiceEntity serviceEntity = SERVICE_ENTITY_SERVICE.findById(id);
         return ServiceEntityJsonConverter.convertServiceEntityToJson(serviceEntity);
     }
@@ -40,7 +46,8 @@ public class ActiveServicesController {
     @GET
     @Path("/active-services/name/{serviceId}")
     @Produces(MediaType.APPLICATION_JSON)
-    public String getActiveServiceByServiceId(@PathParam("serviceId") String serviceId) {
+    @ApiOperation(value = "Get an active service by serviceId", response = ServiceEntity.class)
+    public String getActiveServiceByServiceId(@ApiParam(value = "ServiceId from the properties file", required = true) @PathParam("serviceId") String serviceId) {
         ServiceEntity serviceEntity = SERVICE_ENTITY_SERVICE.findByServiceId(serviceId);
         return ServiceEntityJsonConverter.convertServiceEntityToJson(serviceEntity);
     }
