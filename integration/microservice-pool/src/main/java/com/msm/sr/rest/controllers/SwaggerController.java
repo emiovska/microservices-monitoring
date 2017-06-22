@@ -15,9 +15,11 @@ import javax.ws.rs.core.MediaType;
 @Path("/swagger")
 public class SwaggerController {
 
+    private static final String SWAGGER_JSP_LOCATION = "/swagger/index.jsp";
+
     @GET
     public Viewable index() {
-        return new Viewable("/swagger/index.jsp");
+        return new Viewable(SWAGGER_JSP_LOCATION);
     }
 
     @GET

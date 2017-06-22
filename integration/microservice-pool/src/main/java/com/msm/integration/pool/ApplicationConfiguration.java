@@ -9,9 +9,12 @@ import org.glassfish.jersey.server.mvc.jsp.JspMvcFeature;
  */
 public class ApplicationConfiguration extends ResourceConfig {
 
+    private static final String PACKAGES_SCANNER_LOCATION = "com.msm.sr.rest";
+    private static final String APPLICATION_BASE_PATH = "/";
+
     public ApplicationConfiguration() {
-        packages("com.msm.sr.rest");
-        property(JspMvcFeature.TEMPLATE_BASE_PATH, "/");
+        packages(PACKAGES_SCANNER_LOCATION);
+        property(JspMvcFeature.TEMPLATE_BASE_PATH, APPLICATION_BASE_PATH);
         register(JspMvcFeature.class);
     }
 
