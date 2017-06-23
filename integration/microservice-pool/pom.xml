@@ -138,7 +138,7 @@
                                     active services.
                                 </description>
                             </info>
-                            <swaggerDirectory>src/main/webapp/</swaggerDirectory>
+                            <swaggerDirectory>src/main/resources/</swaggerDirectory>
                         </apiSource>
                     </apiSources>
                 </configuration>

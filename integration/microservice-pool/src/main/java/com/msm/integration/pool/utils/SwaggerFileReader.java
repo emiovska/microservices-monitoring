@@ -14,7 +14,7 @@ import java.io.IOException;
 public class SwaggerFileReader {
 
     public static String readSwaggerFile() {
-        String filePath = PathBuilder.buildRootPath(new String[]{"src", "main", "webapp", "swagger.json"});
+        String filePath = PathBuilder.buildPathForFile("swagger.json");
         File file = new File(filePath);
 
         StringBuilder swaggerFile = new StringBuilder();
