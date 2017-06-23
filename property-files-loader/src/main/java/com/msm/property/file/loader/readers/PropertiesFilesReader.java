@@ -24,7 +24,7 @@ public class PropertiesFilesReader {
      */
     public static Map<String, String> readFileData(String fileName) throws FileNotFoundException {
         HashMap<String, String> properties = new HashMap<>();
-        String filePath = PathBuilder.buildRootPath(new String[]{"src", "main", "resources", fileName});
+        String filePath = PathBuilder.buildPathForFile(fileName);
         File file = new File(filePath);
         if (!file.exists()) {
             throw new FileNotFoundException(fileName + " was not found");
