@@ -1,0 +1,111 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "This is a simple Microservices Pool which only registers, deregisters and lists\n                                    active services.",
+    "version" : "0.0.1-SNAPSHOT",
+    "title" : "Swagger documentation for the Microservices Pool REST API"
+  },
+  "host" : "localhost:8080",
+  "basePath" : "/",
+  "tags" : [ {
+    "name" : "Active Services Controller"
+  } ],
+  "schemes" : [ "http" ],
+  "paths" : {
+    "/active-services" : {
+      "get" : {
+        "tags" : [ "Active Services Controller" ],
+        "summary" : "List all active services",
+        "description" : "",
+        "operationId" : "getActiveServices",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Service Entity"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/active-services/name/{serviceId}" : {
+      "get" : {
+        "tags" : [ "Active Services Controller" ],
+        "summary" : "Get an active service by serviceId",
+        "description" : "",
+        "operationId" : "getActiveServiceByServiceId",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "serviceId",
+          "in" : "path",
+          "description" : "ServiceId from the properties file",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/Service Entity"
+            }
+          }
+        }
+      }
+    },
+    "/active-services/{id}" : {
+      "get" : {
+        "tags" : [ "Active Services Controller" ],
+        "summary" : "Get an active service by database id",
+        "description" : "",
+        "operationId" : "getActiveService",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Database id",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int64"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/Service Entity"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "Service Entity" : {
+      "type" : "object",
+      "required" : [ "healthCheck", "id", "serviceHost", "serviceId" ],
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "Auto generated id"
+        },
+        "serviceId" : {
+          "type" : "string",
+          "description" : "Unique service id which is registered by to the service register"
+        },
+        "serviceHost" : {
+          "type" : "string",
+          "description" : "The host on which the service is running"
+        },
+        "healthCheck" : {
+          "type" : "string",
+          "description" : "The endpoint to which the service register can check if the service is running"
+        }
+      },
+      "description" : "Representation of a registered service"
+    }
+  }
+}

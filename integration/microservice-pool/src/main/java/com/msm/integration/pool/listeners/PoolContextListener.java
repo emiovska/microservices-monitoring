@@ -1,5 +1,6 @@
 package com.msm.integration.pool.listeners;
 
+import com.msm.integration.pool.data.hibernate.utils.HibernateUtils;
 import com.msm.integration.pool.managers.ServiceManager;
 import com.msm.integration.pool.service.state.check.services.ServiceStateService;
 import com.msm.sr.service.status.notification.manager.ServiceStatusNotifierManager;
@@ -27,6 +28,6 @@ public class PoolContextListener implements ServletContextListener {
 
     @Override
     public void contextDestroyed(ServletContextEvent servletContextEvent) {
-
+        HibernateUtils.shutdown();
     }
 }

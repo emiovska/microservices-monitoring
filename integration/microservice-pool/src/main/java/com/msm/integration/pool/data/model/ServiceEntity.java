@@ -1,5 +1,8 @@
 package com.msm.integration.pool.data.model;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
@@ -9,23 +12,28 @@ import javax.validation.constraints.NotNull;
  */
 @Entity
 @Table(name = "service_entity")
+@ApiModel(value = "Service Entity", description = "Representation of a registered service")
 public class ServiceEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "entity_id")
+    @ApiModelProperty(value = "Auto generated id", required = true)
     private Long id;
 
     @NotNull
     @Column(name = "service_id", unique = true)
+    @ApiModelProperty(value = "Unique service id which is registered by to the service register", required = true)
     private String serviceId;
 
     @NotNull
     @Column(name = "service_host")
+    @ApiModelProperty(value = "The host on which the service is running", required = true)
     private String serviceHost;
 
     @NotNull
     @Column(name = "health_check")
+    @ApiModelProperty(value = "The endpoint to which the service register can check if the service is running", required = true)
     private String healthCheck;
 
     public ServiceEntity() {
