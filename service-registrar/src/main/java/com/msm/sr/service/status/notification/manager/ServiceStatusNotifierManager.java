@@ -8,10 +8,13 @@ import com.msm.sr.service.status.notification.notifier.ServiceStatusNotifier;
  */
 public class ServiceStatusNotifierManager {
 
-    private static final ServiceStatusNotifier SERVICE_STATUS_NOTIFIER = new ServiceStatusNotifier();
+    private static final ServiceStatusNotifier serviceStatusNotifier = new ServiceStatusNotifier();
+
+    private ServiceStatusNotifierManager() {
+    }
 
     public static ServiceStatusNotifier getNotifier() {
-        return SERVICE_STATUS_NOTIFIER;
+        return serviceStatusNotifier;
     }
 
 }

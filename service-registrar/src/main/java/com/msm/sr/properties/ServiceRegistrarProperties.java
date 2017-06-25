@@ -1,4 +1,4 @@
-package com.msm.sr.properties.representations;
+package com.msm.sr.properties;
 
 import com.msm.property.file.loader.annotations.PropertiesResource;
 import com.msm.property.file.loader.annotations.PropertyName;
@@ -12,6 +12,7 @@ public class ServiceRegistrarProperties {
 
     @PropertyName("registration.endpoint")
     private String registrationEndpoint;
+    
     @PropertyName("deregistration.endpoint")
     private String deregistrationEndpoint;
 

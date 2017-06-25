@@ -19,30 +19,21 @@ public class ServiceStatusNotifier {
         LISTENERS.addAll(Arrays.asList(listeners));
     }
 
-    public void unregisterListener() {
-        LISTENERS.clear();
+    public void unregisterListener(ServiceStatusListener listener) {
+        LISTENERS.remove(listener);
     }
 
     public void notifyListeners(NotificationType notificationType, String... parameters) {
-        switch (notificationType) {
-            case REGISTRATION:
-                notifyForRegistration(parameters);
-                break;
-            case DEREGISTRATION:
-                notifyForDeregistration(parameters);
-                break;
-            default:
-                break;
-        }
+        notificationType.notify(this, parameters);
     }
 
-    private void notifyForRegistration(String... parameters) {
+    public void notifyForRegistration(String... parameters) {
         for (ServiceStatusListener listener : LISTENERS) {
             listener.notifyForRegistration(parameters);
         }
     }
 
-    private void notifyForDeregistration(String... parameters) {
+    public void notifyForDeregistration(String... parameters) {
         for (ServiceStatusListener listener : LISTENERS) {
             listener.notifyForDeregistration(parameters);
         }
