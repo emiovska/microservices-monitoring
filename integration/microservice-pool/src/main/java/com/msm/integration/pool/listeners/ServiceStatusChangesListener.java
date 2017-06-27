@@ -8,6 +8,7 @@ import org.apache.logging.log4j.Logger;
  * @author riste.jovanoski
  * @since 6/20/2017
  */
+@SuppressWarnings("WeakerAccess")
 public class ServiceStatusChangesListener implements ServiceStatusListener {
 
     private final Logger LOGGER = LogManager.getLogger(this.getClass());

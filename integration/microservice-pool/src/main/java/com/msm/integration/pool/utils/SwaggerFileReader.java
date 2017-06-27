@@ -18,7 +18,7 @@ public class SwaggerFileReader {
         File file = new File(filePath);
 
         StringBuilder swaggerFile = new StringBuilder();
-        String line = null;
+        String line;
         try {
             BufferedReader reader = new BufferedReader(new FileReader(file));
             while ((line = reader.readLine()) != null) {

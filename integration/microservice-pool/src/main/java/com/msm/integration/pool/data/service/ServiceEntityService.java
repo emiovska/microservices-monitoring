@@ -9,6 +9,7 @@ import java.util.List;
  * @author riste.jovanoski
  * @since 6/20/2017
  */
+@SuppressWarnings("SameParameterValue")
 public interface ServiceEntityService extends ServiceStatusListener {
 
     ServiceEntity findById(Long id);

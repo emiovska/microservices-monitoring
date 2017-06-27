@@ -41,6 +41,7 @@ public class ServiceEntityRepositoryImpl implements ServiceEntityRepository {
         return serviceEntity;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public List<ServiceEntity> list() {
         Session session = sessionFactory.openSession();

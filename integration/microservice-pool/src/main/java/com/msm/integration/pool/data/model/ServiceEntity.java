@@ -10,6 +10,7 @@ import javax.validation.constraints.NotNull;
  * @author riste.jovanoski
  * @since 6/20/2017
  */
+@SuppressWarnings("JpaDataSourceORMInspection")
 @Entity
 @Table(name = "service_entity")
 @ApiModel(value = "Service Entity", description = "Representation of a registered service")
@@ -49,6 +50,7 @@ public class ServiceEntity {
         return id;
     }
 
+    @SuppressWarnings("unused")
     public void setId(Long id) {
         this.id = id;
     }

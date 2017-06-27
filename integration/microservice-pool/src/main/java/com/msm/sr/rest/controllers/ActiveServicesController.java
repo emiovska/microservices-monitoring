@@ -31,7 +31,7 @@ public class ActiveServicesController {
     @ApiOperation(value = "List all active services", response = ServiceEntity.class, responseContainer = "List")
     public String getActiveServices() {
         List<ServiceEntity> serviceEntities = serviceEntityService.findAll();
-        return ServiceEntityJsonConverter.convertServiceEntitiesListToJson(serviceEntities);
+        return ServiceEntityJsonConverter.convertToJson(serviceEntities);
     }
 
     @GET
@@ -40,7 +40,7 @@ public class ActiveServicesController {
     @ApiOperation(value = "Get an active service by database id", response = ServiceEntity.class)
     public String getActiveService(@ApiParam(value = "Database id", required = true) @PathParam("id") Long id) {
         ServiceEntity serviceEntity = serviceEntityService.findById(id);
-        return ServiceEntityJsonConverter.convertServiceEntityToJson(serviceEntity);
+        return ServiceEntityJsonConverter.convertToJson(serviceEntity);
     }
 
     @GET
@@ -49,7 +49,7 @@ public class ActiveServicesController {
     @ApiOperation(value = "Get an active service by serviceId", response = ServiceEntity.class)
     public String getActiveServiceByServiceId(@ApiParam(value = "ServiceId from the properties file", required = true) @PathParam("serviceId") String serviceId) {
         ServiceEntity serviceEntity = serviceEntityService.findByServiceId(serviceId);
-        return ServiceEntityJsonConverter.convertServiceEntityToJson(serviceEntity);
+        return ServiceEntityJsonConverter.convertToJson(serviceEntity);
     }
 
 }
