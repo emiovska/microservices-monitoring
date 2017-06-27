@@ -11,16 +11,16 @@ import java.util.List;
  */
 public interface ServiceEntityService extends ServiceStatusListener {
 
-    public ServiceEntity findById(Long id);
+    ServiceEntity findById(Long id);
 
-    public ServiceEntity findByServiceId(String serviceId);
+    ServiceEntity findByServiceId(String serviceId);
 
-    public List<ServiceEntity> findAll();
+    List<ServiceEntity> findAll();
 
-    public void save(String serviceId, String serviceHost, String healthCheck);
+    void save(String serviceId, String serviceHost, String healthCheck);
 
-    public void update(Long id, String serviceId, String serviceHost, String healthCheck);
+    void update(Long id, String serviceId, String serviceHost, String healthCheck);
 
-    public void delete(Long id);
+    void delete(Long id);
 
 }

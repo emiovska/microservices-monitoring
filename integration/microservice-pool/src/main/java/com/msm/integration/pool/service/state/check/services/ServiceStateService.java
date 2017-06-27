@@ -6,6 +6,6 @@ package com.msm.integration.pool.service.state.check.services;
  */
 public interface ServiceStateService {
 
-    public void checkServicesState();
+    void checkServicesState();
 
 }

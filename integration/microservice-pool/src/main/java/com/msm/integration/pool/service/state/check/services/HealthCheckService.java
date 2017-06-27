@@ -8,6 +8,6 @@ import com.msm.integration.pool.data.model.ServiceEntity;
  */
 public interface HealthCheckService {
 
-    public boolean isServiceActive(ServiceEntity serviceEntity);
+    boolean isServiceActive(ServiceEntity serviceEntity);
 
 }

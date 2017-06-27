@@ -12,8 +12,8 @@ import java.util.Map;
  */
 public interface MMHttpClientInterface {
 
-    public MMHttpResponse executeGet(String url, Map<String, String> parameters) throws IOException;
+    MMHttpResponse executeGet(String url, Map<String, String> parameters) throws IOException;
 
-    public MMHttpResponse executePost(String url, Map<String, String> parameters) throws IOException;
+    MMHttpResponse executePost(String url, Map<String, String> parameters) throws IOException;
 
 }
