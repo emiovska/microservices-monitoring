@@ -10,16 +10,16 @@ import java.util.List;
  */
 public interface ServiceEntityRepository {
 
-    public ServiceEntity findById(Long id);
+    ServiceEntity findById(Long id);
 
-    public ServiceEntity findByServiceId(String serviceId);
+    ServiceEntity findByServiceId(String serviceId);
 
-    public List<ServiceEntity> list();
+    List<ServiceEntity> list();
 
-    public void save(ServiceEntity serviceEntity);
+    void save(ServiceEntity serviceEntity);
 
-    public void update(ServiceEntity serviceEntity);
+    void update(ServiceEntity serviceEntity);
 
-    public void delete(ServiceEntity serviceEntity);
+    void delete(ServiceEntity serviceEntity);
 
 }

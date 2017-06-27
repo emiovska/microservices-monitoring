@@ -12,7 +12,7 @@ import java.util.List;
  */
 public class ServiceEntityJsonConverter {
 
-    private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
+    private static final ObjectMapper objectMapper = new ObjectMapper();
 
     public static String convertServiceEntityToJson(ServiceEntity serviceEntity) {
         if (serviceEntity == null) {
@@ -21,7 +21,7 @@ public class ServiceEntityJsonConverter {
 
         String result = null;
         try {
-            result = OBJECT_MAPPER.writeValueAsString(serviceEntity);
+            result = objectMapper.writeValueAsString(serviceEntity);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -34,7 +34,7 @@ public class ServiceEntityJsonConverter {
         }
         String result = null;
         try {
-            result = OBJECT_MAPPER.writeValueAsString(serviceEntities);
+            result = objectMapper.writeValueAsString(serviceEntities);
         } catch (IOException e) {
             e.printStackTrace();
         }

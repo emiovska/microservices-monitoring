@@ -15,12 +15,15 @@ import javax.servlet.ServletContextListener;
  */
 public class PoolContextListener implements ServletContextListener {
 
-    private static final ServiceStatusNotifier NOTIFIER = ServiceStatusNotifierManager.getNotifier();
-    private static final ServiceStateService SERVICE_STATE_SERVICE = ServiceManager.getServiceStateService();
+    private static final ServiceStatusNotifier serviceStatusNotifier = ServiceStatusNotifierManager.getNotifier();
+    private static final ServiceStateService serviceStateService = ServiceManager.getServiceStateService();
 
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
         ServiceStatusChangesListener serviceStatusChangesListener = new ServiceStatusChangesListener();
+        serviceStatusNotifier.registerListener(serviceStatusChangesListener);
+        ServiceManager.initializeListeners();
+        serviceStateService.checkServicesState();
         NOTIFIER.registerListener(serviceStatusChangesListener);
         NOTIFIER.registerListener(ServiceManager.getServiceEntityService());
         SERVICE_STATE_SERVICE.checkServicesState();

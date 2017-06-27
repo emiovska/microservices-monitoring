@@ -9,8 +9,8 @@ import java.io.InputStream;
  */
 public interface MMHttpResponseInterface {
 
-    public int getStatusCode();
+    int getStatusCode();
 
-    public InputStream getContent() throws IOException;
+    InputStream getContent() throws IOException;
 
 }

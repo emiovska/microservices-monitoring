@@ -13,6 +13,7 @@ import java.util.Map;
  * @since 6/16/2017
  */
 public class MMHttpParametersBuilder implements MMHttpParametersBuilderInterface {
+
     @Override
     public String buildHttpGetParameters(String url, Map<String, String> parameters) {
         if (parameters == null) {

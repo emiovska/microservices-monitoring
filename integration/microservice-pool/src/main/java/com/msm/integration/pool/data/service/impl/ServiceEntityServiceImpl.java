@@ -13,57 +13,57 @@ import java.util.List;
  */
 public class ServiceEntityServiceImpl implements ServiceEntityService {
 
-    private static final ServiceEntityRepository SERVICE_ENTITY_REPOSITORY = RepositoryManager.getServiceEntityRepository();
+    private static final ServiceEntityRepository serviceEntityRepository = RepositoryManager.getServiceEntityRepository();
 
     @Override
     public ServiceEntity findById(Long id) {
-        return SERVICE_ENTITY_REPOSITORY.findById(id);
+        return serviceEntityRepository.findById(id);
     }
 
     @Override
     public ServiceEntity findByServiceId(String serviceId) {
-        return SERVICE_ENTITY_REPOSITORY.findByServiceId(serviceId);
+        return serviceEntityRepository.findByServiceId(serviceId);
     }
 
     @Override
     public List<ServiceEntity> findAll() {
-        return SERVICE_ENTITY_REPOSITORY.list();
+        return serviceEntityRepository.list();
     }
 
     @Override
     public void save(String serviceId, String serviceHost, String healthCheck) {
-        SERVICE_ENTITY_REPOSITORY.save(new ServiceEntity(serviceId, serviceHost, healthCheck));
+        serviceEntityRepository.save(new ServiceEntity(serviceId, serviceHost, healthCheck));
     }
 
     @Override
     public void update(Long id, String serviceId, String serviceHost, String healthCheck) {
-        ServiceEntity serviceEntity = SERVICE_ENTITY_REPOSITORY.findById(id);
+        ServiceEntity serviceEntity = serviceEntityRepository.findById(id);
         serviceEntity.setServiceId(serviceId);
         serviceEntity.setServiceHost(serviceHost);
         serviceEntity.setHealthCheck(healthCheck);
-        SERVICE_ENTITY_REPOSITORY.update(serviceEntity);
+        serviceEntityRepository.update(serviceEntity);
     }
 
     @Override
     public void delete(Long id) {
-        SERVICE_ENTITY_REPOSITORY.delete(SERVICE_ENTITY_REPOSITORY.findById(id));
+        serviceEntityRepository.delete(serviceEntityRepository.findById(id));
     }
 
     @Override
     public void notifyForRegistration(String... parameters) {
         String serviceId = parameters[0];
         if (!checkIfServiceWithServiceIdExists(serviceId)) {
-            SERVICE_ENTITY_REPOSITORY.save(new ServiceEntity(serviceId, parameters[1], parameters[2]));
+            serviceEntityRepository.save(new ServiceEntity(serviceId, parameters[1], parameters[2]));
         }
     }
 
     @Override
     public void notifyForDeregistration(String... parameters) {
-        SERVICE_ENTITY_REPOSITORY.delete(SERVICE_ENTITY_REPOSITORY.findByServiceId(parameters[0]));
+        serviceEntityRepository.delete(serviceEntityRepository.findByServiceId(parameters[0]));
     }
 
     private boolean checkIfServiceWithServiceIdExists(String serviceId) {
-        ServiceEntity serviceEntity = SERVICE_ENTITY_REPOSITORY.findByServiceId(serviceId);
+        ServiceEntity serviceEntity = serviceEntityRepository.findByServiceId(serviceId);
         return serviceEntity != null;
     }
 

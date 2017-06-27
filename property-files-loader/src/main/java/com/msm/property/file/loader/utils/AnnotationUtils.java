@@ -14,13 +14,13 @@ import java.util.Set;
  */
 public class AnnotationUtils {
 
-    private static final Reflections REFLECTIONS = new Reflections();
+    private static final Reflections reflections = new Reflections();
 
     public static Set<Class<?>> getClassesWithAnnotation(Class annotation) {
         if(annotation == null) {
             return new HashSet<>();
         }
-        return REFLECTIONS.getTypesAnnotatedWith(annotation);
+        return reflections.getTypesAnnotatedWith(annotation);
     }
 
     public static String extractFileName(Class propertiesResource) {

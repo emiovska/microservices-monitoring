@@ -21,7 +21,7 @@ import java.util.Map;
  */
 public class MMHttpClient implements MMHttpClientInterface {
 
-    private static final MMHttpParametersBuilder PARAMETERS_BUILDER = new MMHttpParametersBuilder();
+    private static final MMHttpParametersBuilder parametersBuilder = new MMHttpParametersBuilder();
 
     private HttpClient client;
 
@@ -31,7 +31,7 @@ public class MMHttpClient implements MMHttpClientInterface {
 
     @Override
     public MMHttpResponse executeGet(String url, Map<String, String> parameters) throws IOException {
-        url = PARAMETERS_BUILDER.buildHttpGetParameters(url, parameters);
+        url = parametersBuilder.buildHttpGetParameters(url, parameters);
         HttpGet request = new HttpGet(url);
         HttpResponse response = client.execute(request);
         return new MMHttpResponse(response);
@@ -40,7 +40,7 @@ public class MMHttpClient implements MMHttpClientInterface {
     @Override
     public MMHttpResponse executePost(String url, Map<String, String> parameters) throws IOException {
         HttpPost request = new HttpPost(url);
-        List<NameValuePair> urlParameters = PARAMETERS_BUILDER.buildHttpPostParameters(parameters);
+        List<NameValuePair> urlParameters = parametersBuilder.buildHttpPostParameters(parameters);
         request.setEntity(new UrlEncodedFormEntity(urlParameters));
         return new MMHttpResponse(client.execute(request));
     }
