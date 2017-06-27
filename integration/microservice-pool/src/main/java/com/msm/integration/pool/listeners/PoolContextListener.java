@@ -22,11 +22,8 @@ public class PoolContextListener implements ServletContextListener {
     public void contextInitialized(ServletContextEvent servletContextEvent) {
         ServiceStatusChangesListener serviceStatusChangesListener = new ServiceStatusChangesListener();
         serviceStatusNotifier.registerListener(serviceStatusChangesListener);
-        ServiceManager.initializeListeners();
+        serviceStatusNotifier.registerListener(ServiceManager.getServiceEntityService());
         serviceStateService.checkServicesState();
-        NOTIFIER.registerListener(serviceStatusChangesListener);
-        NOTIFIER.registerListener(ServiceManager.getServiceEntityService());
-        SERVICE_STATE_SERVICE.checkServicesState();
     }
 
     @Override

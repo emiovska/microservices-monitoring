@@ -13,7 +13,6 @@ import com.msm.integration.pool.service.state.check.services.impl.ServiceStateSe
  */
 public class ServiceManager {
 
-    private static final ServiceStatusNotifier serviceStatusNotifier = ServiceStatusNotifierManager.getNotifier();
     private static final ServiceEntityService serviceEntityService = new ServiceEntityServiceImpl();
     private static final HealthCheckService healthCheckService = new HealthCheckServiceImpl();
     private static final ServiceStateService serviceStateService = new ServiceStateServiceImpl();
