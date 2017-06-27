@@ -7,6 +7,7 @@ import com.msm.property.file.loader.annotations.PropertyName;
  * @author riste.jovanoski
  * @since 6/14/2017
  */
+@SuppressWarnings("unused")
 @PropertiesResource("service.properties")
 public class ServiceProperties {
 
