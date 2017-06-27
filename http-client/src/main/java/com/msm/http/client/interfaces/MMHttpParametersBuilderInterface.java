@@ -11,8 +11,8 @@ import java.util.Map;
  */
 public interface MMHttpParametersBuilderInterface {
 
-    public String buildHttpGetParameters(String url, Map<String, String> parameters);
+    String buildHttpGetParameters(String url, Map<String, String> parameters);
 
-    public List<NameValuePair> buildHttpPostParameters(Map<String, String> parameters);
+    List<NameValuePair> buildHttpPostParameters(Map<String, String> parameters);
 
 }
