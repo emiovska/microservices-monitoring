@@ -19,7 +19,7 @@
     </filter-mapping>
 
     <listener>
-        <listener-class>com.msm.sr.listeners.CustomServletContextListener</listener-class>
+        <listener-class>com.msm.sr.base.ServiceRegistrarServletContextListener</listener-class>
     </listener>
     <listener>
         <listener-class>com.msm.integration.pool.listeners.PoolContextListener</listener-class>
