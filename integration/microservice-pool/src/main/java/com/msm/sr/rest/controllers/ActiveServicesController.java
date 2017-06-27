@@ -23,14 +23,14 @@ import java.util.List;
 @Api(value = "/", description = "Service for active services registered to the service register", tags = {"Active Services Controller"})
 public class ActiveServicesController {
 
-    private final ServiceEntityService SERVICE_ENTITY_SERVICE = ServiceManager.getServiceEntityService();
+    private final ServiceEntityService serviceEntityService = ServiceManager.getServiceEntityService();
 
     @GET
     @Path("/active-services")
     @Produces(MediaType.APPLICATION_JSON)
     @ApiOperation(value = "List all active services", response = ServiceEntity.class, responseContainer = "List")
     public String getActiveServices() {
-        List<ServiceEntity> serviceEntities = SERVICE_ENTITY_SERVICE.findAll();
+        List<ServiceEntity> serviceEntities = serviceEntityService.findAll();
         return ServiceEntityJsonConverter.convertServiceEntitiesListToJson(serviceEntities);
     }
 
@@ -39,7 +39,7 @@ public class ActiveServicesController {
     @Produces(MediaType.APPLICATION_JSON)
     @ApiOperation(value = "Get an active service by database id", response = ServiceEntity.class)
     public String getActiveService(@ApiParam(value = "Database id", required = true) @PathParam("id") Long id) {
-        ServiceEntity serviceEntity = SERVICE_ENTITY_SERVICE.findById(id);
+        ServiceEntity serviceEntity = serviceEntityService.findById(id);
         return ServiceEntityJsonConverter.convertServiceEntityToJson(serviceEntity);
     }
 
@@ -48,7 +48,7 @@ public class ActiveServicesController {
     @Produces(MediaType.APPLICATION_JSON)
     @ApiOperation(value = "Get an active service by serviceId", response = ServiceEntity.class)
     public String getActiveServiceByServiceId(@ApiParam(value = "ServiceId from the properties file", required = true) @PathParam("serviceId") String serviceId) {
-        ServiceEntity serviceEntity = SERVICE_ENTITY_SERVICE.findByServiceId(serviceId);
+        ServiceEntity serviceEntity = serviceEntityService.findByServiceId(serviceId);
         return ServiceEntityJsonConverter.convertServiceEntityToJson(serviceEntity);
     }
 

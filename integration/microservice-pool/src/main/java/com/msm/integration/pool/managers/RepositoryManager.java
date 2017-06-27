@@ -9,10 +9,10 @@ import com.msm.integration.pool.data.repository.impl.ServiceEntityRepositoryImpl
  */
 public class RepositoryManager {
 
-    private static final ServiceEntityRepository SERVICE_ENTITY_REPOSITORY = new ServiceEntityRepositoryImpl();
+    private static final ServiceEntityRepository serviceEntityRepository = new ServiceEntityRepositoryImpl();
 
     public static ServiceEntityRepository getServiceEntityRepository() {
-        return SERVICE_ENTITY_REPOSITORY;
+        return serviceEntityRepository;
     }
 
 }
