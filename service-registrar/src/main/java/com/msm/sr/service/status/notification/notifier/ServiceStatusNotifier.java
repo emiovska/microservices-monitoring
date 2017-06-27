@@ -13,28 +13,28 @@ import java.util.List;
  */
 public class ServiceStatusNotifier {
 
-    private static List<ServiceStatusListener> LISTENERS = new ArrayList<>();
+    private static List<ServiceStatusListener> listeners = new ArrayList<>();
 
     public void registerListener(ServiceStatusListener... listeners) {
-        LISTENERS.addAll(Arrays.asList(listeners));
+        ServiceStatusNotifier.listeners.addAll(Arrays.asList(listeners));
     }
 
     public void unregisterListener(ServiceStatusListener listener) {
-        LISTENERS.remove(listener);
+        listeners.remove(listener);
     }
 
     public void notifyListeners(NotificationType notificationType, String... parameters) {
-        notificationType.notify(this, parameters);
+        notificationType.notifyForUpdate(this, parameters);
     }
 
     public void notifyForRegistration(String... parameters) {
-        for (ServiceStatusListener listener : LISTENERS) {
+        for (ServiceStatusListener listener : listeners) {
             listener.notifyForRegistration(parameters);
         }
     }
 
     public void notifyForDeregistration(String... parameters) {
-        for (ServiceStatusListener listener : LISTENERS) {
+        for (ServiceStatusListener listener : listeners) {
             listener.notifyForDeregistration(parameters);
         }
     }

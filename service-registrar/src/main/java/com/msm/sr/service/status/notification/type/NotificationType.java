@@ -9,16 +9,16 @@ import com.msm.sr.service.status.notification.notifier.ServiceStatusNotifier;
 public enum NotificationType {
     REGISTRATION {
         @Override
-        public void notify(ServiceStatusNotifier serviceStatusNotifier, String... parameters) {
+        public void notifyForUpdate(ServiceStatusNotifier serviceStatusNotifier, String... parameters) {
             serviceStatusNotifier.notifyForRegistration(parameters);
         }
     },
     DEREGISTRATION {
         @Override
-        public void notify(ServiceStatusNotifier serviceStatusNotifier, String... parameters) {
+        public void notifyForUpdate(ServiceStatusNotifier serviceStatusNotifier, String... parameters) {
             serviceStatusNotifier.notifyForDeregistration(parameters);
         }
     };
 
-    public abstract void notify(ServiceStatusNotifier serviceStatusNotifier, String... parameters);
+    public abstract void notifyForUpdate(ServiceStatusNotifier serviceStatusNotifier, String... parameters);
 }
