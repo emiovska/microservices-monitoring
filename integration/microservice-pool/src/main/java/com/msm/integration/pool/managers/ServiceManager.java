@@ -15,25 +15,25 @@ import com.msm.sr.service.status.notification.notifier.ServiceStatusNotifier;
  */
 public class ServiceManager {
 
-    private static final ServiceStatusNotifier NOTIFIER = ServiceStatusNotifierManager.getNotifier();
-    private static final ServiceEntityService SERVICE_ENTITY_SERVICE = new ServiceEntityServiceImpl();
-    private static final HealthCheckService HEALTH_CHECK_SERVICE = new HealthCheckServiceImpl();
-    private static final ServiceStateService SERVICE_STATE_SERVICE = new ServiceStateServiceImpl();
+    private static final ServiceStatusNotifier serviceStatusNotifier = ServiceStatusNotifierManager.getNotifier();
+    private static final ServiceEntityService serviceEntityService = new ServiceEntityServiceImpl();
+    private static final HealthCheckService healthCheckService = new HealthCheckServiceImpl();
+    private static final ServiceStateService serviceStateService = new ServiceStateServiceImpl();
 
     public static void initializeListeners() {
-        NOTIFIER.registerListener(SERVICE_ENTITY_SERVICE);
+        serviceStatusNotifier.registerListener(serviceEntityService);
     }
 
     public static ServiceEntityService getServiceEntityService() {
-        return SERVICE_ENTITY_SERVICE;
+        return serviceEntityService;
     }
 
     public static HealthCheckService getHealthCheckService() {
-        return HEALTH_CHECK_SERVICE;
+        return healthCheckService;
     }
 
     public static ServiceStateService getServiceStateService() {
-        return SERVICE_STATE_SERVICE;
+        return serviceStateService;
     }
 
 }

@@ -13,7 +13,7 @@ import org.hibernate.cfg.Configuration;
 public class HibernateUtils {
 
     private static final Logger LOGGER = LogManager.getLogger(HibernateUtils.class);
-    private static final SessionFactory SESSION_FACTORY = buildSessionFactory();
+    private static final SessionFactory sessionFactory = buildSessionFactory();
 
     private static SessionFactory buildSessionFactory() {
         try {
@@ -25,7 +25,7 @@ public class HibernateUtils {
     }
 
     public static SessionFactory getSessionFactory() {
-        return SESSION_FACTORY;
+        return sessionFactory;
     }
 
     public static void shutdown() {

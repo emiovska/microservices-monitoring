@@ -16,11 +16,11 @@ import java.util.List;
  */
 public class ServiceEntityRepositoryImpl implements ServiceEntityRepository {
 
-    private static final SessionFactory SESSION_FACTORY = HibernateUtils.getSessionFactory();
+    private static final SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
 
     @Override
     public ServiceEntity findById(Long id) {
-        Session session = SESSION_FACTORY.openSession();
+        Session session = sessionFactory.openSession();
         ServiceEntity serviceEntity = session.get(ServiceEntity.class, id);
         session.close();
         return serviceEntity;
@@ -28,7 +28,7 @@ public class ServiceEntityRepositoryImpl implements ServiceEntityRepository {
 
     @Override
     public ServiceEntity findByServiceId(String serviceId) {
-        Session session = SESSION_FACTORY.openSession();
+        Session session = sessionFactory.openSession();
         Query query = constructQueryByServiceId(session, serviceId);
         ServiceEntity serviceEntity;
         try {
@@ -43,7 +43,7 @@ public class ServiceEntityRepositoryImpl implements ServiceEntityRepository {
 
     @Override
     public List<ServiceEntity> list() {
-        Session session = SESSION_FACTORY.openSession();
+        Session session = sessionFactory.openSession();
         List services = session.createQuery("from ServiceEntity").list();
         session.close();
         return services;
@@ -51,7 +51,7 @@ public class ServiceEntityRepositoryImpl implements ServiceEntityRepository {
 
     @Override
     public void save(ServiceEntity serviceEntity) {
-        Session session = SESSION_FACTORY.openSession();
+        Session session = sessionFactory.openSession();
         session.beginTransaction();
         session.save(serviceEntity);
         session.flush();
@@ -61,7 +61,7 @@ public class ServiceEntityRepositoryImpl implements ServiceEntityRepository {
 
     @Override
     public void update(ServiceEntity serviceEntity) {
-        Session session = SESSION_FACTORY.openSession();
+        Session session = sessionFactory.openSession();
         session.beginTransaction();
         session.update(serviceEntity);
         session.flush();
@@ -71,7 +71,7 @@ public class ServiceEntityRepositoryImpl implements ServiceEntityRepository {
 
     @Override
     public void delete(ServiceEntity serviceEntity) {
-        Session session = SESSION_FACTORY.openSession();
+        Session session = sessionFactory.openSession();
         session.beginTransaction();
         session.delete(serviceEntity);
         session.flush();

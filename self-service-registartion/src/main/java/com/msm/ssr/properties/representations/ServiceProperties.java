@@ -9,16 +9,22 @@ import com.msm.property.file.loader.annotations.PropertyName;
  */
 @PropertiesResource("service.properties")
 public class ServiceProperties {
+
     @PropertyName("service.id")
     private String id;
+
     @PropertyName("service.healthcheck.endpoint")
     private String healthCheckEndpoint;
+
     @PropertyName("service.registration.endpoint")
     private String registrationEndpoint;
+
     @PropertyName("service.deregisration.endpoint")
     private String deregistrationEndpoint;
+
     @PropertyName("service.registrar.host")
     private String registrarHost;
+
     @PropertyName("service.useHostnameOverIP")
     private String useHostnameOverIp;
 

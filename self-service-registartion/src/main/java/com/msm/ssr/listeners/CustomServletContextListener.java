@@ -18,9 +18,10 @@ import javax.servlet.ServletContextListener;
  * @since 6/13/2017
  */
 public class CustomServletContextListener implements ServletContextListener {
+
     private final Logger LOGGER = LogManager.getLogger(this.getClass());
     private static final String HEALTH_CHECK_METHOD_NAME = "healthCheck";
-    private static final ServiceRegistrationService SERVICE_REGISTRATION_SERVICE = new ServiceRegistrationService();
+    private static final ServiceRegistrationService serviceRegistrationService = new ServiceRegistrationService();
 
     public void contextInitialized(ServletContextEvent servletContextEvent) {
         LOGGER.debug("contextInitialized");
@@ -31,7 +32,7 @@ public class CustomServletContextListener implements ServletContextListener {
             String healthCheckEndpoint = serviceProperties.getHealthCheckEndpoint();
             EndpointConfigurator.changePathValue(HealthCheckController.class, healthCheckEndpoint, HEALTH_CHECK_METHOD_NAME);
 
-            SERVICE_REGISTRATION_SERVICE.register(serviceProperties.getRegistrarHost(), serviceProperties.getRegistrationEndpoint(), serviceProperties.getId(), serviceRunningAddress, healthCheckEndpoint);
+            serviceRegistrationService.register(serviceProperties.getRegistrarHost(), serviceProperties.getRegistrationEndpoint(), serviceProperties.getId(), serviceRunningAddress, healthCheckEndpoint);
         } catch (ApplicationServerUrlException e) {
             e.printStackTrace();
             LOGGER.debug("Could not construct the server urls");
@@ -41,6 +42,6 @@ public class CustomServletContextListener implements ServletContextListener {
     public void contextDestroyed(ServletContextEvent servletContextEvent) {
         LOGGER.debug("contextDestroyed");
         ServiceProperties serviceProperties = PropertiesFilesService.getPropertiesResource(ServiceProperties.class);
-        SERVICE_REGISTRATION_SERVICE.deregister(serviceProperties.getRegistrarHost(), serviceProperties.getDeregistrationEndpoint(), serviceProperties.getId());
+        serviceRegistrationService.deregister(serviceProperties.getRegistrarHost(), serviceProperties.getDeregistrationEndpoint(), serviceProperties.getId());
     }
 }
