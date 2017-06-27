@@ -40,9 +40,9 @@ public class ServerUtils {
      * the url with an IP address, and the second is the url with a hostname.
      * If no address can be constructed, an exception is thrown.
      *
-     * @param contextPath
-     * @return Url with hostname and url with ip addres as list
-     * @throws ApplicationServerUrlException
+     * @param contextPath The application base path
+     * @return Url with hostname and url with ip address as list
+     * @throws ApplicationServerUrlException throws if the server url could not be build
      */
     public static List<String> getServerUrl(String contextPath) throws ApplicationServerUrlException {
         try {

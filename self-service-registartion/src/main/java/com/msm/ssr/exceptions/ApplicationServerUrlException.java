@@ -6,7 +6,7 @@ package com.msm.ssr.exceptions;
  */
 public class ApplicationServerUrlException extends Exception {
 
-    public ApplicationServerUrlException(String message) {
+    public ApplicationServerUrlException(@SuppressWarnings("SameParameterValue") String message) {
         super(message);
     }
 }

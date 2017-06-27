@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!--suppress JSUnresolvedLibraryURL, CheckEmptyScriptTag, HtmlUnknownTarget, XmlUnusedNamespaceDeclaration -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -25,6 +26,7 @@
             background: #fafafa;
         }
 
+        /*noinspection CssUnusedSymbol*/
         .swagger-container > div.wrapper {
             display: none;
         }
@@ -73,7 +75,7 @@
 <script>
     window.onload = function () {
         // Build a system
-        const ui = SwaggerUIBundle({
+        window.ui = SwaggerUIBundle({
             url: "${pageContext.request.contextPath}/swagger/json",
             dom_id: '#swagger-ui',
             presets: [
@@ -85,8 +87,6 @@
             ],
             layout: "StandaloneLayout"
         });
-
-        window.ui = ui
     }
 </script>
 </body>

@@ -13,6 +13,7 @@ import java.util.List;
  * @author riste.jovanoski
  * @since 6/20/2017
  */
+@SuppressWarnings("unused")
 public class DataTest {
 
     private static final ServiceEntityService SERVICE_ENTITY_SERVICE = ServiceManager.getServiceEntityService();

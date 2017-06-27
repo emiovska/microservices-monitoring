@@ -11,8 +11,10 @@ import java.util.List;
  * @author riste.jovanoski
  * @since 6/19/2017
  */
+@SuppressWarnings("unused")
 public class ServiceStatusNotifier {
 
+    @SuppressWarnings("CanBeFinal")
     private static List<ServiceStatusListener> listeners = new ArrayList<>();
 
     public void registerListener(ServiceStatusListener... listeners) {

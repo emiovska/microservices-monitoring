@@ -16,6 +16,7 @@ public class AnnotationUtils {
 
     private static final Reflections reflections = new Reflections();
 
+    @SuppressWarnings("unchecked")
     public static Set<Class<?>> getClassesWithAnnotation(Class annotation) {
         if(annotation == null) {
             return new HashSet<>();

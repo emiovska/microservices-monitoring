@@ -9,9 +9,11 @@ import java.util.Map;
  * @author riste.jovanoski
  * @since 6/14/2017
  */
+@SuppressWarnings({"WeakerAccess", "unused"})
 public class PropertiesFilesService {
 
-    private static Map<Class, Object> resources = new HashMap();
+    @SuppressWarnings("CanBeFinal")
+    private static Map<Class, Object> resources = new HashMap<>();
 
     static {
         resources = PropertiesFilesMapper.mapPropertiesFilesIntoClasses();

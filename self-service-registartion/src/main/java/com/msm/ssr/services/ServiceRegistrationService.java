@@ -22,6 +22,7 @@ public class ServiceRegistrationService implements ServiceRegistrationInterface 
     private static final String SERVICE_ID_PARAMETER_NAME = "serviceId";
     private static final String SERVICE_HOST_PARAMETER_NAME = "serviceHost";
     private static final String SERVICE_HEALTH_CHECK_PARAMETER_NAME = "healthCheckEndpoint";
+    private static final MMHttpClient client = new MMHttpClient();
 
     @Override
     public boolean register(String registerHost, String registrationEndpoint, String serviceId, String serviceHost, String healthCheckEndpoint) {
@@ -29,14 +30,10 @@ public class ServiceRegistrationService implements ServiceRegistrationInterface 
             String serviceRegisterUrl = MMUrlPathBuilder.buildUrl(registerHost, new String[]{registrationEndpoint});
             Map<String, String> parameters = MMHttpUtils.constructParametersMap(new String[]{SERVICE_ID_PARAMETER_NAME, SERVICE_HOST_PARAMETER_NAME, SERVICE_HEALTH_CHECK_PARAMETER_NAME}, new String[]{serviceId, serviceHost, healthCheckEndpoint});
 
-            MMHttpClient client = new MMHttpClient();
-            MMHttpResponse response = client.executePost(serviceRegisterUrl, parameters);
-
-            int statusCode = response.getStatusCode();
-            if (statusCode == MMStatusCode.OK) {
-                LOGGER.debug("successfully registered");
+            if (checkIfCallWasSuccessful(client.executePost(serviceRegisterUrl, parameters))) {
                 return true;
             }
+
         } catch (MMUrlBuildException | IOException exception) {
             exception.printStackTrace();
         }
@@ -51,11 +48,7 @@ public class ServiceRegistrationService implements ServiceRegistrationInterface 
             String serviceRegisterUrl = MMUrlPathBuilder.buildUrl(registerHost, new String[]{deregisterEndpoint});
             Map<String, String> parameters = MMHttpUtils.constructParametersMap(new String[]{SERVICE_ID_PARAMETER_NAME}, new String[]{serviceId});
 
-            MMHttpClient client = new MMHttpClient();
-            MMHttpResponse response = client.executeGet(serviceRegisterUrl, parameters);
-
-            int statusCode = response.getStatusCode();
-            if (statusCode == MMStatusCode.OK) {
+            if (checkIfCallWasSuccessful(client.executeGet(serviceRegisterUrl, parameters))) {
                 LOGGER.debug("successfully unregistered");
                 return true;
             }
@@ -65,6 +58,11 @@ public class ServiceRegistrationService implements ServiceRegistrationInterface 
 
         LOGGER.debug("unsuccessfully unregistered");
         return false;
+    }
+
+    private boolean checkIfCallWasSuccessful(MMHttpResponse response) {
+        int statusCode = response.getStatusCode();
+        return statusCode == MMStatusCode.OK;
     }
 
 }

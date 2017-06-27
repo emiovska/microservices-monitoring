@@ -12,6 +12,7 @@ import javax.ws.rs.core.MediaType;
 @Path("/")
 public class HealthCheckController {
 
+    @SuppressWarnings("SameReturnValue")
     @GET
     @Path("/app-check")
     @Produces(MediaType.TEXT_PLAIN)

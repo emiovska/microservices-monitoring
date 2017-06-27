@@ -29,7 +29,7 @@ public class PropertiesFilesReader {
         if (!file.exists()) {
             throw new FileNotFoundException(fileName + " was not found");
         }
-        String line = null;
+        String line;
         try {
             BufferedReader reader = new BufferedReader(new FileReader(file));
             while ((line = reader.readLine()) != null) {

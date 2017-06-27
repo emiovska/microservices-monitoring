@@ -1,12 +1,10 @@
 package com.msm.endpoint.configurator;
 
+import com.msm.endpoint.configurator.utils.PathAnnotationUtils;
 import com.msm.endpoint.configurator.utils.PathUtils;
-import com.msm.endpoint.configurator.value.overrider.AnnotationValueOverrider;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import javax.ws.rs.Path;
-import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 
 /**
@@ -19,26 +17,16 @@ public class EndpointConfigurator {
 
     public static boolean changePathValue(Class resourceClass, String newPathValue) {
         newPathValue = PathUtils.normalizeNewPathValue(newPathValue);
-        Annotation annotation = resourceClass.getAnnotation(Path.class);
-        if (AnnotationValueOverrider.overrideAnnotationValue(annotation, newPathValue)) {
-            LOGGER.debug("newPathValue successfully overridden");
-            return true;
-        }
-
-        LOGGER.debug("could not override newPathValue");
-        return false;
+        return PathAnnotationUtils.overridePathAnnotationValue(resourceClass, newPathValue);
     }
 
+    @SuppressWarnings("unchecked")
     public static boolean changePathValue(Class resource, String newPathValue, String methodName, Class<?>... parametersTypes) {
         newPathValue = PathUtils.normalizeNewPathValue(newPathValue);
-        Method method = null;
+        Method method;
         try {
             method = resource.getMethod(methodName, parametersTypes);
-            Annotation annotation = method.getAnnotation(Path.class);
-            if (AnnotationValueOverrider.overrideAnnotationValue(annotation, newPathValue)) {
-                LOGGER.debug("newPathValue successfully overridden");
-                return true;
-            }
+            return PathAnnotationUtils.overridePathAnnotationValue(method, newPathValue);
         } catch (NoSuchMethodException e) {
             e.printStackTrace();
         }
