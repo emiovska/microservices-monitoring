@@ -84,13 +84,6 @@
         </dependency>
 
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>${servlet.api.version}</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
             <groupId>com.github.emiovska.mm.property.files.loader</groupId>
             <artifactId>properties.file.loader</artifactId>
             <version>${properties.files.loader.version}</version>

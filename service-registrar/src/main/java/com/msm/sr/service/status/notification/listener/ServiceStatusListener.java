@@ -6,8 +6,8 @@ package com.msm.sr.service.status.notification.listener;
  */
 public interface ServiceStatusListener {
 
-    public void notifyForRegistration(String... parameters);
+    void notifyForRegistration(String... parameters);
 
-    public void notifyForDeregistration(String... parameters);
+    void notifyForDeregistration(String... parameters);
 
 }

@@ -13,37 +13,28 @@ import java.util.List;
  */
 public class ServiceStatusNotifier {
 
-    private static List<ServiceStatusListener> LISTENERS = new ArrayList<>();
+    private static List<ServiceStatusListener> listeners = new ArrayList<>();
 
     public void registerListener(ServiceStatusListener... listeners) {
-        LISTENERS.addAll(Arrays.asList(listeners));
+        ServiceStatusNotifier.listeners.addAll(Arrays.asList(listeners));
     }
 
-    public void unregisterListener() {
-        LISTENERS.clear();
+    public void unregisterListener(ServiceStatusListener listener) {
+        listeners.remove(listener);
     }
 
     public void notifyListeners(NotificationType notificationType, String... parameters) {
-        switch (notificationType) {
-            case REGISTRATION:
-                notifyForRegistration(parameters);
-                break;
-            case DEREGISTRATION:
-                notifyForDeregistration(parameters);
-                break;
-            default:
-                break;
-        }
+        notificationType.notifyForUpdate(this, parameters);
     }
 
-    private void notifyForRegistration(String... parameters) {
-        for (ServiceStatusListener listener : LISTENERS) {
+    public void notifyForRegistration(String... parameters) {
+        for (ServiceStatusListener listener : listeners) {
             listener.notifyForRegistration(parameters);
         }
     }
 
-    private void notifyForDeregistration(String... parameters) {
-        for (ServiceStatusListener listener : LISTENERS) {
+    public void notifyForDeregistration(String... parameters) {
+        for (ServiceStatusListener listener : listeners) {
             listener.notifyForDeregistration(parameters);
         }
     }

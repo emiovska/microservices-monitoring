@@ -19,7 +19,7 @@
     </servlet-mapping>
 
     <listener>
-        <listener-class>com.msm.sr.listeners.CustomServletContextListener</listener-class>
+        <listener-class>com.msm.sr.base.ServiceRegistrarServletContextListener</listener-class>
     </listener>
 
 </web-app>
