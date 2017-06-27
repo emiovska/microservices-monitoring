@@ -6,8 +6,8 @@ package com.msm.sr.rest.actions;
  */
 public interface ServiceRegistrarActions {
 
-    void register(String serviceId, String serviceHost, String healthEndpoint);
+    int register(String serviceId, String serviceHost, String healthEndpoint);
 
-    void deregister(String serviceId);
+    int deregister(String serviceId);
 
 }
