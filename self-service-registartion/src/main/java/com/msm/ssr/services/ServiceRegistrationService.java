@@ -31,6 +31,7 @@ public class ServiceRegistrationService implements ServiceRegistrationInterface 
             Map<String, String> parameters = MMHttpUtils.constructParametersMap(new String[]{SERVICE_ID_PARAMETER_NAME, SERVICE_HOST_PARAMETER_NAME, SERVICE_HEALTH_CHECK_PARAMETER_NAME}, new String[]{serviceId, serviceHost, healthCheckEndpoint});
 
             if (checkIfCallWasSuccessful(client.executePost(serviceRegisterUrl, parameters))) {
+                LOGGER.debug("successfully registered");
                 return true;
             }
 
