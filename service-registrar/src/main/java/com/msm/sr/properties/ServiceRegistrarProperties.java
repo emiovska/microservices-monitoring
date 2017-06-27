@@ -13,7 +13,7 @@ public class ServiceRegistrarProperties {
 
     @PropertyName("registration.endpoint")
     private String registrationEndpoint;
-    
+
     @PropertyName("deregistration.endpoint")
     private String deregistrationEndpoint;
 
