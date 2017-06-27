@@ -13,6 +13,7 @@ public class AnnotationValueOverrider {
     private static final String ANNOTATION_VALUE_PROPERTY_NAME = "value";
     private static final String FIELD_PROPERTY_NAME = "memberValues";
 
+    @SuppressWarnings("unchecked")
     public static boolean overrideAnnotationValue(Annotation annotation, String newValue) {
         Object handler = Proxy.getInvocationHandler(annotation);
         Field field;
