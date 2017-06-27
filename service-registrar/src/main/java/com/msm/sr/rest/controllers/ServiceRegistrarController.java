@@ -32,7 +32,7 @@ public class ServiceRegistrarController implements ServiceRegistrarActions {
 
     @GET
     @Path(DEREGISTRATION_METHOD_PATH)
-    public int deregister(@PathParam(SERVICE_ID_PARAMETER_NAME) String serviceId) {
+    public int deregister(@QueryParam(SERVICE_ID_PARAMETER_NAME) String serviceId) {
         serviceStatusNotifier.notifyListeners(NotificationType.DEREGISTRATION, serviceId);
         return Response.Status.OK.getStatusCode();
     }
