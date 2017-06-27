@@ -6,8 +6,6 @@ import com.msm.integration.pool.service.state.check.services.HealthCheckService;
 import com.msm.integration.pool.service.state.check.services.ServiceStateService;
 import com.msm.integration.pool.service.state.check.services.impl.HealthCheckServiceImpl;
 import com.msm.integration.pool.service.state.check.services.impl.ServiceStateServiceImpl;
-import com.msm.sr.service.status.notification.manager.ServiceStatusNotifierManager;
-import com.msm.sr.service.status.notification.notifier.ServiceStatusNotifier;
 
 /**
  * @author riste.jovanoski
@@ -15,14 +13,9 @@ import com.msm.sr.service.status.notification.notifier.ServiceStatusNotifier;
  */
 public class ServiceManager {
 
-    private static final ServiceStatusNotifier serviceStatusNotifier = ServiceStatusNotifierManager.getNotifier();
     private static final ServiceEntityService serviceEntityService = new ServiceEntityServiceImpl();
     private static final HealthCheckService healthCheckService = new HealthCheckServiceImpl();
     private static final ServiceStateService serviceStateService = new ServiceStateServiceImpl();
-
-    public static void initializeListeners() {
-        serviceStatusNotifier.registerListener(serviceEntityService);
-    }
 
     public static ServiceEntityService getServiceEntityService() {
         return serviceEntityService;
