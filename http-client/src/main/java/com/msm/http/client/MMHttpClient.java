@@ -19,11 +19,12 @@ import java.util.Map;
  * @author riste.jovanoski
  * @since 6/16/2017
  */
+@SuppressWarnings("unused")
 public class MMHttpClient implements MMHttpClientInterface {
 
     private static final MMHttpParametersBuilder parametersBuilder = new MMHttpParametersBuilder();
 
-    private HttpClient client;
+    private final HttpClient client;
 
     public MMHttpClient() {
         this.client = HttpClientBuilder.create().build();

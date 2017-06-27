@@ -6,6 +6,7 @@ import com.msm.http.client.exceptions.MMUrlBuildException;
  * @author riste.jovanoski
  * @since 6/21/2017
  */
+@SuppressWarnings({"WeakerAccess", "unused"})
 public class MMUrlPathBuilder {
 
     public static String buildUrl(String host, String[] actions) throws MMUrlBuildException {

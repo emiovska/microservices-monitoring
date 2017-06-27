@@ -7,6 +7,7 @@ import java.io.InputStream;
  * @author riste.jovanoski
  * @since 6/16/2017
  */
+@SuppressWarnings("unused")
 public interface MMHttpResponseInterface {
 
     int getStatusCode();

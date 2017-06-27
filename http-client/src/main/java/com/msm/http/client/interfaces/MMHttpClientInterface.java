@@ -10,6 +10,7 @@ import java.util.Map;
  * @author riste.jovanoski
  * @since 6/16/2017
  */
+@SuppressWarnings("unused")
 public interface MMHttpClientInterface {
 
     MMHttpResponse executeGet(String url, Map<String, String> parameters) throws IOException;

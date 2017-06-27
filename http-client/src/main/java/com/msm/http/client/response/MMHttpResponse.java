@@ -12,7 +12,7 @@ import java.io.InputStream;
  */
 public class MMHttpResponse implements MMHttpResponseInterface {
 
-    private HttpResponse response;
+    private final HttpResponse response;
 
     public MMHttpResponse(HttpResponse response) {
         this.response = response;

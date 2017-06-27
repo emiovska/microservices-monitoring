@@ -8,6 +8,7 @@ import java.util.Map;
  * @author riste.jovanoski
  * @since 6/16/2017
  */
+@SuppressWarnings({"WeakerAccess", "unused"})
 public class MMHttpUtils {
 
     public static Map<String, String> constructParametersMap(String[] names, String[] values) {
