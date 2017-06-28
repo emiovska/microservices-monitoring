@@ -4,9 +4,13 @@ import com.msm.sr.rest.actions.ServiceRegistrarActions;
 import com.msm.sr.service.status.notification.manager.ServiceStatusNotifierManager;
 import com.msm.sr.service.status.notification.notifier.ServiceStatusNotifier;
 import com.msm.sr.service.status.notification.type.NotificationType;
+import com.msm.sr.utils.ServiceServerUtils;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
+import java.util.Enumeration;
 
 import static com.msm.sr.base.ServiceRegistrationDeregistrationEndpointConfigurator.DEREGISTRATION_METHOD_PATH;
 import static com.msm.sr.base.ServiceRegistrationDeregistrationEndpointConfigurator.REGISTRATION_METHOD_PATH;
@@ -25,8 +29,8 @@ public class ServiceRegistrarController implements ServiceRegistrarActions {
 
     @POST
     @Path(REGISTRATION_METHOD_PATH)
-    public int register(@FormParam(SERVICE_ID_PARAMETER_NAME) String serviceId, @FormParam(SERVICE_HOST_PARAMETER_NAME) String serviceHost, @FormParam(SERVICE_HEALTH_CHECK_PARAMETER_NAME) String healthEndpoint) {
-        serviceStatusNotifier.notifyListeners(NotificationType.REGISTRATION, serviceId, serviceHost, healthEndpoint);
+    public int register(@Context HttpServletRequest request, @FormParam(SERVICE_ID_PARAMETER_NAME) String serviceId, @FormParam(SERVICE_HOST_PARAMETER_NAME) String serviceHost, @FormParam(SERVICE_HEALTH_CHECK_PARAMETER_NAME) String healthEndpoint) {
+        serviceStatusNotifier.notifyListeners(NotificationType.REGISTRATION, serviceId, serviceHost, healthEndpoint, ServiceServerUtils.getClientIpAddress(request));
         return Response.Status.OK.getStatusCode();
     }
 

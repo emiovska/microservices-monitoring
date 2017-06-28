@@ -85,7 +85,7 @@
   "definitions" : {
     "Service Entity" : {
       "type" : "object",
-      "required" : [ "healthCheck", "id", "serviceHost", "serviceId" ],
+      "required" : [ "extractedServiceHost", "healthCheck", "id", "serviceHost", "serviceId" ],
       "properties" : {
         "id" : {
           "type" : "integer",
@@ -99,6 +99,10 @@
         "serviceHost" : {
           "type" : "string",
           "description" : "The host on which the service is running"
+        },
+        "extractedServiceHost" : {
+          "type" : "string",
+          "description" : "The host on which the service is running extracted from the registration request"
         },
         "healthCheck" : {
           "type" : "string",

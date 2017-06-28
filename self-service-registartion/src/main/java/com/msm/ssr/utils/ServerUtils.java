@@ -1,8 +1,6 @@
 package com.msm.ssr.utils;
 
 import com.msm.ssr.exceptions.ApplicationServerUrlException;
-import com.msm.ssr.host.type.ServiceHostType;
-import com.msm.ssr.properties.representations.ServiceProperties;
 
 import javax.management.*;
 import java.lang.management.ManagementFactory;
@@ -25,14 +23,6 @@ public class ServerUtils {
     private static final String PROTOCOL_TYPE = "HTTP/1.1";
     private static final String SCHEME_LABEL = "scheme";
     private static final String PORT_LABEL = "port";
-
-    public static String getServiceAddress(String contextPath, ServiceProperties serviceProperties) throws ApplicationServerUrlException {
-        String hostnameOverIp = serviceProperties.getUseHostnameOverIp();
-        if (hostnameOverIp != null && hostnameOverIp.equals("true")) {
-            return ServiceHostType.HOSTNAME.getServiceAddress(contextPath);
-        }
-        return ServiceHostType.IP.getServiceAddress(contextPath);
-    }
 
     /**
      * Gets the server url on which the application is running.

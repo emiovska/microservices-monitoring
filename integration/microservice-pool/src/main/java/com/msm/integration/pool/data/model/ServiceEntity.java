@@ -33,6 +33,11 @@ public class ServiceEntity {
     private String serviceHost;
 
     @NotNull
+    @Column(name = "secondary_service_host")
+    @ApiModelProperty(value = "The host on which the service is running extracted from the registration request", required = true)
+    private String extractedServiceHost;
+
+    @NotNull
     @Column(name = "health_check")
     @ApiModelProperty(value = "The endpoint to which the service register can check if the service is running", required = true)
     private String healthCheck;
@@ -40,9 +45,10 @@ public class ServiceEntity {
     public ServiceEntity() {
     }
 
-    public ServiceEntity(String serviceId, String serviceHost, String healthCheck) {
+    public ServiceEntity(String serviceId, String serviceHost, String secondaryServiceHost, String healthCheck) {
         this.serviceId = serviceId;
         this.serviceHost = serviceHost;
+        this.extractedServiceHost = secondaryServiceHost;
         this.healthCheck = healthCheck;
     }
 
@@ -79,8 +85,16 @@ public class ServiceEntity {
         this.healthCheck = healthCheck;
     }
 
+    public String getExtractedServiceHost() {
+        return extractedServiceHost;
+    }
+
+    public void setExtractedServiceHost(String extractedServiceHost) {
+        this.extractedServiceHost = extractedServiceHost;
+    }
+
     @Override
     public String toString() {
-        return String.format("%d: %s - %s - %s", this.id, this.serviceId, this.serviceHost, this.healthCheck);
+        return String.format("%d: %s - %s - %s - %s", this.id, this.serviceId, this.serviceHost, this.extractedServiceHost, this.healthCheck);
     }
 }

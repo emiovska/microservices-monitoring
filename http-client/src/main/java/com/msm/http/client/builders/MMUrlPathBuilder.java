@@ -14,6 +14,10 @@ public class MMUrlPathBuilder {
             throw new MMUrlBuildException("Could not build url! Host and actions must not be null");
         }
 
+        if (!host.startsWith("http")) {
+            host = String.format("http://%s", host);
+        }
+
         StringBuilder urlBuilder = new StringBuilder();
         if (host.endsWith("/")) {
             host = host.substring(0, (host.length() - 1));

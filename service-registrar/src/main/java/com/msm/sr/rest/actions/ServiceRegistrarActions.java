@@ -1,5 +1,7 @@
 package com.msm.sr.rest.actions;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * @author riste.jovanoski
  * @since 6/20/2017
@@ -7,7 +9,7 @@ package com.msm.sr.rest.actions;
 @SuppressWarnings("unused")
 public interface ServiceRegistrarActions {
 
-    int register(String serviceId, String serviceHost, String healthEndpoint);
+    int register(HttpServletRequest request, String serviceId, String serviceHost, String healthEndpoint);
 
     int deregister(String serviceId);
 
