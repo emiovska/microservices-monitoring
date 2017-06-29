@@ -5,6 +5,8 @@ import com.msm.property.file.loader.service.PropertiesFilesService;
 import com.msm.sr.properties.ServiceRegistrarProperties;
 import com.msm.sr.rest.controllers.ServiceRegistrarController;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * @author elena.miovska
  * @since 6/25/2017
@@ -17,7 +19,7 @@ public class ServiceRegistrationDeregistrationEndpointConfigurator {
     public static final String DEREGISTRATION_METHOD_PATH = "deregister";
 
     public static void configureEndpoints() {
-        EndpointConfigurator.changePathValue(ServiceRegistrarController.class, properties.getRegistrationEndpoint(), REGISTRATION_METHOD_PATH, String.class, String.class, String.class);
+        EndpointConfigurator.changePathValue(ServiceRegistrarController.class, properties.getRegistrationEndpoint(), REGISTRATION_METHOD_PATH, HttpServletRequest.class, String.class, String.class, String.class);
         EndpointConfigurator.changePathValue(ServiceRegistrarController.class, properties.getDeregistrationEndpoint(), DEREGISTRATION_METHOD_PATH, String.class);
 
     }

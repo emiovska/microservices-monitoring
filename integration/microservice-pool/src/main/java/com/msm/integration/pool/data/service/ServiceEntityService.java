@@ -18,9 +18,9 @@ public interface ServiceEntityService extends ServiceStatusListener {
 
     List<ServiceEntity> findAll();
 
-    void save(String serviceId, String serviceHost, String healthCheck);
+    void save(String serviceId, String serviceHost, String secondaryServiceHost, String healthCheck);
 
-    void update(Long id, String serviceId, String serviceHost, String healthCheck);
+    void update(Long id, String serviceId, String serviceHost, String secondaryServiceHost, String healthCheck);
 
     void delete(Long id);
 

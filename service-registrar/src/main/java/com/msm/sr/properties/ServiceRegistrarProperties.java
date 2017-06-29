@@ -17,6 +17,9 @@ public class ServiceRegistrarProperties {
     @PropertyName("deregistration.endpoint")
     private String deregistrationEndpoint;
 
+    @PropertyName("use.secondary.service.host.address")
+    private String useSecondaryServiceHostAddress;
+
     public String getRegistrationEndpoint() {
         return registrationEndpoint;
     }
@@ -31,5 +34,13 @@ public class ServiceRegistrarProperties {
 
     public void setDeregistrationEndpoint(String deregistrationEndpoint) {
         this.deregistrationEndpoint = deregistrationEndpoint;
+    }
+
+    public String getUseSecondaryServiceHostAddress() {
+        return useSecondaryServiceHostAddress;
+    }
+
+    public void setUseSecondaryServiceHostAddress(String useSecondaryServiceHostAddress) {
+        this.useSecondaryServiceHostAddress = useSecondaryServiceHostAddress;
     }
 }
