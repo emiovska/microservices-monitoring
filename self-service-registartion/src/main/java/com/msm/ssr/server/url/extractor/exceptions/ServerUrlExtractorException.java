@@ -6,6 +6,7 @@ package com.msm.ssr.server.url.extractor.exceptions;
  */
 public class ServerUrlExtractorException extends Exception {
 
+    @SuppressWarnings("SameParameterValue")
     public ServerUrlExtractorException(String message) {
         super(message);
     }

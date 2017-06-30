@@ -89,6 +89,7 @@ public class ServiceEntity {
         return extractedServiceHost;
     }
 
+    @SuppressWarnings("unused")
     public void setExtractedServiceHost(String extractedServiceHost) {
         this.extractedServiceHost = extractedServiceHost;
     }
