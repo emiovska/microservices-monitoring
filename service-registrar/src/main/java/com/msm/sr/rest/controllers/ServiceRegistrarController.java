@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
-import java.util.Enumeration;
 
 import static com.msm.sr.base.ServiceRegistrationDeregistrationEndpointConfigurator.DEREGISTRATION_METHOD_PATH;
 import static com.msm.sr.base.ServiceRegistrationDeregistrationEndpointConfigurator.REGISTRATION_METHOD_PATH;

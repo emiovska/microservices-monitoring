@@ -8,7 +8,6 @@ import com.msm.ssr.rest.controller.HealthCheckController;
 import com.msm.ssr.server.url.extractor.ServerUrlExtractor;
 import com.msm.ssr.server.url.extractor.managers.ExtractorManager;
 import com.msm.ssr.services.ServiceRegistrationService;
-import com.msm.ssr.utils.ServerUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

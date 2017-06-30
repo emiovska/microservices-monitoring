@@ -4,6 +4,7 @@ package com.msm.sr.request.header.names;
  * @author riste.jovanoski
  * @since 6/28/2017
  */
+@SuppressWarnings("unused")
 public interface HeaderNames {
     String X_FORWARDED_FOR = "X-Forwarded-For";
     String PROXY_CLIENT_IP = "Proxy-Client-IP";

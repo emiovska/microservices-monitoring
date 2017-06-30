@@ -3,11 +3,7 @@ package com.msm.sr.utils;
 import com.msm.sr.request.header.names.HeaderNames;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.sound.midi.Soundbank;
-
 import java.lang.reflect.Field;
-
-import static com.msm.sr.request.header.names.HeaderNames.*;
 
 /**
  * @author riste.jovanoski
